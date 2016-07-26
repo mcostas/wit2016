@@ -1,0 +1,166 @@
+\begin{thebibliography}{10}
+
+\bibitem{superyacht}
+Jones, T., Modern adhesives in the marine industry. Technical report,
+  Superyacht Business, 2014.
+
+\bibitem{Peroni2009}
+Peroni, L., Avalle, M. \& Belingardi, G., Comparison of the energy absorption
+  capability of crash boxes assembled by spot-weld and continuous joining
+  techniques. \emph{International Journal of Impact Engineering},
+  \textbf{36(3)}, pp. 498--511, 2009.
+
+\bibitem{Scattina2011}
+Scattina, A., Peroni, L., Peroni, M. \& Avalle, M., Numerical analysis of
+  hybrid joining in car body applications. \emph{Journal of Adhesion Science
+  and Technology}, \textbf{25(18)}, pp. 2409--2433, 2011.
+
+\bibitem{Lee2006}
+Lee, M.H., Kim, H.Y. \& Oh, S.I., Crushing test of double hat-shaped members of
+  dissimilar materials with adhesively bonded and self-piercing riveted joining
+  methods. \emph{Thin-Walled Structures}, \textbf{44(4)}, pp. 381--386, 2006.
+
+\bibitem{Yang2012}
+Yang, X., Xia, Y., Zhou, Q., Wang, P.C. \& Wang, K., Modeling of high strength
+  steel joints bonded with toughened adhesive for vehicle crash simulations.
+  \emph{International Journal of Adhesion and Adhesives}, \textbf{39}, pp.
+  21--32, 2012.
+
+\bibitem{Yamashita2013}
+Yamashita, M., Kenmotsu, H. \& Hattori, T., Dynamic crush behavior of
+  adhesive-bonded aluminum tubular structure - experiment and numerical
+  simulation. \emph{Thin-Walled Structures}, \textbf{69}, pp. 45--53, 2013.
+
+\bibitem{Abedrabbo2009}
+Abedrabbo, N., Mayer, R., Thompson, A., Salisbury, C., Worswick, M. \& van
+  Riemsdijk, I., Crash response of advanced high-strength steel tubes:
+  Experiment and model. \emph{International Journal of Impact Engineering},
+  \textbf{36(8)}, pp. 1044--1057, 2009.
+
+\bibitem{Costas2013}
+Costas, M., D\'{\i{}}az, J., Romera, L., Hern\'{a}ndez, S. \& Tielas, A.,
+  Static and dynamic axial crushing analysis of car frontal impact hybrid
+  absorbers.
+
+\bibitem{Goglio2008}
+Goglio, L. \& Rossetto, M., Impact rupture of structural adhesive joints under
+  different stress combinations. \emph{International Journal of Impact
+  Engineering}, \textbf{35(7)}, pp. 635--643, 2008.
+
+\bibitem{manufCatalog}
+Loctite, \emph{Loctite EA 9514 technical data sheet}, 2014.
+
+\bibitem{Sadowski2010}
+Sadowski, T., Kne\'{c}, M. \& Golewski, P., Experimental investigations and
+  numerical modelling of steel adhesive joints reinforced by rivets.
+  \emph{International Journal of Adhesion and Adhesives}, \textbf{30(5)}, pp.
+  338--346, 2010.
+
+\bibitem{SernaMoreno2015}
+Serna~Moreno, M., L\'{o}pez~Cela, J., Mart\'{\i{}}nez~Vicente, J. \&
+  Gonz\'{a}lez~Vecino, J., Adhesively bonded joints as a dissipative energy
+  mechanism under impact loading. \emph{Applied Mathematical Modelling},
+  \textbf{39(12)}, pp. 3496--3505, 2015.
+
+\bibitem{Sadowski2011}
+Sadowski, T., Golewski, P. \& Zarzeka-Raczkowska, E., Damage and failure
+  processes of hybrid joints: Adhesive bonded aluminium plates reinforced by
+  rivets. \emph{Computational Materials Science}, \textbf{50(4)}, pp.
+  1256--1262, 2011.
+
+\bibitem{Sadowski2014}
+Sadowski, T., Kne\'{c}, M. \& Golewski, P., Spot welding-adhesive joints:
+  Modelling and testing. \emph{Journal of Adhesion}, \textbf{90(4)}, pp.
+  346--364, 2014.
+
+\bibitem{Abaqus613Manual}
+Dassault Syst\`{e}mes, \emph{Abaqus 6.13 User's Manual}, 2013.
+
+\bibitem{JDiaz}
+D\'{\i{}}az, J., Pereira, F., Romera, L. \& Hern\'{a}ndez, S., Probabilistic
+  assessment of the structural failure of single-lap bonded joints.
+
+\bibitem{Wu2013}
+Wu, W., Liu, Q., Zong, Z., Sun, G. \& Li, Q., Experimental investigation into
+  transverse crashworthiness of cfrp adhesively bonded joints in vehicle
+  structure. \emph{Composite Structures}, \textbf{106}, pp. 581--589, 2013.
+
+\bibitem{Vaidya2006}
+Vaidya, U., Gautam, A., Hosur, M. \& Dutta, P., Experimental-numerical studies
+  of transverse impact response of adhesively bonded lap joints in composite
+  structures. \emph{International Journal of Adhesion and Adhesives},
+  \textbf{26(3)}, pp. 184--198, 2006.
+
+\bibitem{Greve2007}
+Greve, L. \& Andrieux, F., Deformation and failure modelling of high strength
+  adhesives for crash simulation. \emph{International Journal of Fracture},
+  \textbf{143(2)}, pp. 143--160, 2007.
+
+\bibitem{Loureiro2010}
+Loureiro, A., Da~Silva, L., Sato, C. \& Figueiredo, M., Comparison of the
+  mechanical behaviour between stiff and flexible adhesive joints for the
+  automotive industry. \emph{Journal of Adhesion}, \textbf{86(7)}, pp.
+  765--787, 2010.
+
+\bibitem{wiki_fracture_modes}
+Fracture crack separation modes.
+  \url{https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Fracture_modes_v2.svg/2000px-Fracture_modes_v2.svg.png}.
+
+\bibitem{dakota}
+Adams, B., Bauman, L., Bohnhoff, W., Dalbey, K., Ebeida, M., Eddy, J., Eldred,
+  M., Hough, P., Hu, K., Jakeman, J., Stephens, J., Swiler, L., Vigil, D. \&
+  Wildey, T., Dakota, a multilevel parallel object-oriented framework for
+  design optimization, parameter estimation, uncertainty quantification, and
+  sensitivity analysis. Technical report, Sandia National Laboratories, 2014.
+
+\bibitem{Moes1999}
+Mo\"{e}s, N., Dolbow, J. \& Belytschko, T., A finite element method for crack
+  growth without remeshing. \emph{International Journal for Numerical Methods
+  in Engineering}, \textbf{46(1)}, pp. 131--150, 1999.
+
+\bibitem{Hale}
+Hale, S., What is mass scaling and when is it appropriate in explicit dynamics
+  analysis?
+  \url{https://caeai.com/blog/what-mass-scaling-and-when-it-appropriate-explicit-dynamics-analysis},
+  2014.
+
+\bibitem{Alvarez2014}
+\'{A}lvarez, D., Blackman, B., Guild, F. \& Kinloch, A., Mode i fracture in
+  adhesively-bonded joints: A mesh-size independent modelling approach using
+  cohesive elements. \emph{Engineering Fracture Mechanics}, \textbf{115}, pp.
+  73--95, 2014.
+
+\bibitem{Sato2000}
+Sato, C. \& Ikegami, K., Dynamic deformation of lap joints and scarf joints
+  under impact loads. \emph{International Journal of Adhesion and Adhesives},
+  \textbf{20(1)}, pp. 17--25, 2000.
+
+\bibitem{Carlberger2007}
+Carlberger, T. \& Stigh, U., An explicit fe-model of impact fracture in an
+  adhesive joint. \emph{Engineering Fracture Mechanics}, \textbf{74(14)}, pp.
+  2247--2262, 2007.
+
+\bibitem{Ghasemnejad2013}
+Ghasemnejad, H., Argentiero, Y., Tez, T. \& Barrington, P., Impact damage
+  response of natural stitched single lap-joint in composite structures.
+  \emph{Materials and Design}, \textbf{51}, pp. 552--560, 2013.
+
+\bibitem{Liao2011}
+Liao, L., Kobayashi, T., Sawa, T. \& Goda, Y., 3-d fem stress analysis and
+  strength evaluation of single-lap adhesive joints subjected to impact tensile
+  loads. \emph{International Journal of Adhesion and Adhesives},
+  \textbf{31(7)}, pp. 612--619, 2011.
+
+\bibitem{Alfano2001}
+Alfano, G. \& Crisfield, M., Finite element interface models for the
+  delamination analysis of laminated composites: Mechanical and computational
+  issues. \emph{International Journal for Numerical Methods in Engineering},
+  \textbf{50(7)}, pp. 1701--1736, 2001.
+
+\bibitem{May2014}
+May, M., Vo\ss{}, H. \& Hiermaier, S., Predictive modeling of damage and
+  failure in adhesively bonded metallic joints using cohesive interface
+  elements. \emph{International Journal of Adhesion and Adhesives},
+  \textbf{49}, pp. 7--17, 2014.
+
+\end{thebibliography}
