@@ -1,0 +1,13 @@
+#!/bin/bash
+
+QSUB_COMMAND="/opt/gridengine/bin/lx26-amd64/qsub"
+
+PARAMETERIZED_MODEL_FILE="3_bar_2d_parameterized_abaqus.py"
+DEFAULT_VALUES_FILE="3_bar_2d_default_values.dat"
+MODEL_FILE="3_bar_2d.py"
+MODEL_NAME="3_bar_2d"
+
+QUEUE_LAUNCHER="abaqus_cae_launcher.sh"
+
+# Calculos con python
+calc (){ python -c "print $1" ;}

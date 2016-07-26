@@ -1,0 +1,114 @@
+\chapter{The Model}
+\label{Chapter2}
+%By now, this is just some notes
+
+An hexagonal tube was modelled in ABAQUS in order to simulate the suitability of an adhesive bonding in a crash box. The tube consists on two twin hat-shapped aluminium alloy parts, forming a winged hexagonal section. The two pieces are bonded by their wings using either adhesive (specifically Loctite Hysol 9514), spot-weld, or both. The tube is filled with six foam prisms, being separated one to another by three Glass-Fiber Reinforced Polymer (GFRP) plates. \ref{table:general_properties} shows the general properties of these materials, depicting Young's modulus in the elastic branch.
+
+% It would be truly convenient to have a figure to describe all this sh*t
+
+\begin{table}
+\begin{tabular}{lrr}
+  
+  \toprule
+
+  Material & Property & Value \\
+
+  \midrule
+
+  Aluminium & Density, $\rho$ & $\SI{25.6}{\tonne/\m^3}$ \\
+  & Young's Modulus, $E$ & $\SI{70}{\GPa}$ \\
+  & Poisson's Modulus, $\nu$ & $\num{0.33}$ \\
+  
+  \midrule
+
+  GFRP & Density, $\rho$ & $\SI{15.5}{\tonne/\m^3}$ \\
+  & Young's Modulus, $E$ & $\SI{16.25}{\GPa}$ \\
+  & Poisson's Modulus, $\nu$ & $\num{0.4}$ \\
+  
+  \midrule
+
+  Foam & Density, $\rho$ & $\SI{1.35}{\tonne/\m^3}$ \\
+  & Young's Modulus, $E$ & $\SI{59}{\MPa}$ \\
+  & Poisson's Modulus, $\nu$ & $\num{0.1}$ \\
+  
+  \bottomrule
+
+\end{tabular}
+\caption{Materials' general properties}
+\label{table:general_properties}
+\end{table}
+
+\section{Aluminium plates modelling} %---------------------------------------------------------------------------------------------------------------
+
+An AA5754 aluminium alloy was used for the outer plates of the tube, being modelled as a 1mm thick shell. It was considered being an elasto-plastic material, following an user-defined law for its hardening behaviour in the placticity branch.
+
+\section{Glass-Fiber Reinforced Polymer modelling} %-------------------------------------------------------------------------------------------------
+
+Three GFRP unbonded plates were placed inside the tube in other to prevent the aluminium plates from an implosive collapsing, increasing this way its resistance. Two of them were U-shapped and the other one was H-shapped, so they could be placed inside the tube dividing its cavity into six smaller cavities, which would be filled with foam prisms. Its behaviour was defined through an user subroutine, considering an elasto-plastic behaviour with damage.
+
+\section{Foam modelling} %---------------------------------------------------------------------------------------------------------------------------
+
+A foam was used to help on preventing the implosive collapsing by completely filling the cavity. It consisted on a crushable foam with hardening.
+
+\section{Adhesive modelling} %-----------------------------------------------------------------------------------------------------------------------
+
+Loctite Hysol 9514 was the chosen adhesive for the bonding, for its shown interest by many other authors for structural bonding \citep{Sadowski2010, Scattina2011, SernaMoreno2015}. Cohesive and adhesive behaviours were respectively modelled in the bulk material and in the contact property, as any of them may fail \citep{Wu2013}.
+
+\begin{table}
+\begin{tabular}{lrr}
+
+  \toprule
+  Loctite Hysol 9514 	& Density, $\rho$ 			& $\SI{14.6}{\tonne/\m^3}$ 	\\
+  						& Young's Modulus, $E$ 		& $\SI{1.46}{\GPa}$ 		\\
+  						& Poisson's Modulus, $\nu$ 	& $\num{0.295}$ 			\\
+  \bottomrule
+
+\end{tabular}
+\caption{Loctite Hysol 9514: General properties}
+\label{table:loctite_props}
+\end{table}
+
+\subsection{Cohesive behaviour modelling}
+
+The bulk material was supposed to be isotropic linear elastic \citep{SernaMoreno2015} up to failure start. The tensile modulus and the maximum stress were taken from the manufacturer's catalog.
+
+Computationally, the material had to be defined as traction elastic material, as it was a requirement by Abaqus in order to use cohesive elements. This type of finite element is specially indicated to model adhesives, and it has been widely used in Abaqus \citep{Sadowski2010, Sadowski2011, Sadowski2014, Alvarez2014}, and other software \citep{Sato2000, Carlberger2007, Loureiro2010, Scattina2011 Ghasemnejad2013}, although other formulations have also been used \citep{Greve2007, Liao2011, Yang2012, May2014}. %Greve propone la suya. Liao usa solidos. (May analiza la formulacion cohesiva)
+
+%Vaidya habla d la rotura cohesiva, y Wu (tambien adhesiva)
+
+\subsection{Adhesive behaviour modelling}
+
+\newacronymentry{quads}{Quads}{quadratic nominal stress criterion}
+The contact property modelled the adhesion between the bulk and the adherend, including the adhesive failure. The \gls{quads}, which can be seen in \ref{eq:quads}, was used for damage initiation \citep{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Sadowski2014, SernaMoreno2015}, although some authors include this feature in the bulk instead.
+
+\begin{equation}
+\left(\frac{\left<\sigma_{n}\right>}{\sigma_{n}^{0}}\right)^{2} + \left(\frac{\tau_{II}}{\tau_{II}^{0}}\right)^{2} + \left(\frac{\tau_{III}}{\tau_{III}^{0}}\right)^{2} = 1
+\label{eq:quads}
+\end{equation}
+
+where $\sigma_{n}^{0}$, $\tau_{II}^{0}$ and $\tau_{III}^{0}$ represent the pure mode loading threshold stresses for each direction. The out-of-plane value, $\sigma_{n}^{0}$, was set to $\SI{9.5}{\MPa}$, which corresponds to the peeling failure stress for steel. Note that Macaulay brackets indicate that compression is not considered in failure initiation. Both in-plane values, $\tau_{II}^{0}$ and $\tau_{III}^{0}$, were set to $\SI{40}{\MPa}$. % ref to catalog?
+Damage evolution was set as an fracture energy power law \citep{Loureiro2010, Sadowski2010, Sadowski2011, Sadowski2014, SernaMoreno2015}, which is given by \ref{eq:fracture_energy}.
+
+\begin{equation}
+\left(\frac{G_{I}}{G_{Ic}}\right)^{\alpha}+\left(\frac{G_{II}}{G_{IIc}}\right)^{\alpha}+\left(\frac{G_{III}}{G_{IIIc}}\right)^{\alpha}=1
+\label{eq:fracture_energy}
+\end{equation}
+
+where $G_{Ic}$ corresponds to the critical fracture energy required to cause failure in mode I (out-of-plane direction), and being $G_{IIc}$ and $G_{IIIc}$ the values for mode II and III, respectively, which correspond to both in-plane directions. The critical fracture energy for the Loctite Hysol 9514 in the normal direction is $\SI{2028}{\J/\m^2}$ \citep{Scattina2011}. It was considered that the adhesive had no preferential directions for tangential failure, meaning $G_{IIc}$ was equal to $G_{IIIC}$, and being the fracture energy equal to $\SI{11853}{\J/\m^2}$ \citep{Scattina2011}. The exponent $\alpha$ was considered equal to 2 \citep{Loureiro2010, Sadowski2010, Sadowski2011, Sadowski2014, SernaMoreno2015}.
+
+%where $G_{Ic}$ corresponds to the critical value of the fracture energy in the normal direction, being $G_{IIc}$ and $G_{IIIc}$ the values for both tangential directions. The adhesive failure was considered isotropic, implying these three values are equal among them. The fracture energy for the Loctite Hysol 9514 in each direction is $\SI{905}{\J/\m^2}$ \citep{Sadowski2010}. $\alpha$ was considered equal to 2 \citep{Sadowski2010, Loureiro2010} % revise if Greve too
+
+%G_Ic=G_IIc=G_IIIc=905J/m^{2}
+
+\newacronymentry{COH3D}{COH3D}{3D cohesive element}
+When meshing, although \glspl{COH3D} are specifically formulated for modelling adhesive bonds (among other possibilities), they cannot model properlly certain stress distributions that appeared as the plates bend.
+
+The geometry of \glspl{COH3D} requires: there can only be a single layer of elements and their shape must be plate-like (height smaller than the other dimensions, but not negligible). As the adhesive layer is very thin, it matches this geometrical requirements, making these elements suitable for this application; and the needed aspect ratios would allow a coarse mesh with good results. But \glspl{COH3D}, due to their formulation, cannot model properly tangential deformation, which appeared in the bond as the tube collapsed. This situation resulted in spurious deformation modes, which eventually stopped the analysis.
+
+The 3D-stress conventional elements (C3D) are used in this model, as they can model a more generic stress state%, which includes the one that caused problems when using \gls{COH3D},
+ and allow hourglass control, which in some cases was needed. As the shape of each element needs to be more cube-like, and their maximum height was fixed by the adhesive's thickness, a much finer mesh was needed.
+
+In spite of having a finer mesh, the total computational time was eventually reduced as the stable time increment was higher due to lower distortion in the elements. For a certain assembly model, the minimum stable time increment was about $\SI{2e-7}{\s}$, while it was about $\SI{1e-9}{\s}$ when using \glspl{COH3D}.
+
+\section{Assembly models} %--------------------------------------------------------------------------------------------------------------------------
+Several analysis were carried out with different union types and fill combinations. Unions could be: adhesive bonding (labelled as ``AD'' in this document), spot-weld union (``SW''), or a hybrid one with both unions at the same time (``HY''). There were tested up to 5 fill combinations: completely full with the materials previously described (foam and GFRP, labelled with the sufix ``FULL'' in this document), a hexagonal foam prism (labelled as ``FHX'', which stands for ``foam hexagon''), six triangular foam prisms (``F6''), only the GFRP planels (``GFRP''), or empty (``NONE''). For those especimens that had adhesive bonding, several thicknesses for the union were tested. In the case of having welding applied, several number of spots were analysed.

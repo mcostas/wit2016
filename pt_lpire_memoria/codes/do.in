@@ -1,0 +1,123 @@
+environment,
+  tabular_data
+    tabular_data_file = 'results_xy_dakota.dat'
+
+method,
+  id_method = 'OPTIMIZATION_METHOD'
+  model_pointer = 'OPTIMIZATION_MODEL'
+  output debug # silent|quiet|normal|verbose|debug
+  max_iterations = 100
+  max_function_evaluations = 1000
+  final_solutions = 1 # Number of final solutions
+  speculative         # Speculative gradients and hessians
+  # scaling
+  # constraint_tolerance = 1.E-6
+  # convergence_tolerance = 1.E-4
+
+  # DOT library [Vanderplaats Research and Development, 1995]
+  dot_bfgs        # Unconstrained. Broyden-Fletcher-Goldfarb-Shanno BFGS variable metric
+  # dot_frcg        # Unconstrained. Fletcher-Reeves conjugate gradient
+  # dot_mmfd        # Constrained. Modified method of feasible directions
+  # dot_slp         # Constrained. Sequential linear programming
+  # dot_sqp         # Constrained. Sequential quadratic programming
+
+  # NLPQL library [Schittkowski, 2004]
+  # nlpql_sqp       # Constrained. Sequential quadratic programming
+
+  # CONMIN library [Vanderplaats, 1973]
+  # conmin_frcg     # Unconstrained. Fletcher-Reeves conjugate gradient
+  # conmin_mfd      # Constrained. Method of feasible directions
+
+  # OPT++ library [Meza et al., 2007]
+  # optpp_cg        # Unconstrained. Polak-Ribiere conjugate gradient
+    # max_step = 1000. # Maximum step size when computing a change in the current design point
+    # gradient_tolerance = 1.0E-4 # Threshold value on the L2 norm of the objective function gradient that indicates convergence to an unconstrained minimum
+  # optpp_q_newton  # Quasi-Newton
+  # optpp_fd_newton # Finite difference Newton
+  # optpp_newton    # Full Newton
+    # max_step = 1000. # Maximum step size when computing a change in the current design point
+    # gradient_tolerance = 1.0E-4 # Threshold value on the L2 norm of the objective function gradient that indicates convergence to an unconstrained minimum
+    # search_method # Line search method
+      # trust_region                      # Trust region search. Default in unconstrained
+      # tr_pds                            # Robust trust region search using pattern search techniques. Only unconstrained
+      # value_based_line_search           # Satisfies sufficient decrease condition. Default in constrained
+      # gradient_based_line_search        # Line search method proposed by [More and Thuente, 1994]. Satisfies sufficient decrease and curvature conditions
+    # merit_function = argaez_tapia       # Constrained. (el_bakry | argaez_tapia | van_shanno)
+    # central_path = argaez_tapia         # Constrained. (el_bakry | argaez_tapia | van_shanno)
+    # steplength_to_boundary = 0.99995    # 0.8 (el_bakry), 0.99995 (argaez_tapia), 0.95 (van_shanno)
+    # centering_parameter = 0.2           # 0.2 (el_bakry), 0.2 (argaez_tapia), 0.1 (van_shanno)
+
+  # APPS. Asynchronous parallel pattern search algorithm [Gray and Kolda, 2006]
+  # asynch_pattern_search
+    # FALTAN ESPECIFICACIONES. Dakota reference pp 66
+
+  # SCOLIB. Nongradient-based optimizers
+    # FALTAN
+
+  # JEGA library [Eddy and Lewis, 2001]. Global optimization methods
+    # FALTAN
+
+model,
+  id_model = 'OPTIMIZATION_MODEL'
+  variables_pointer = 'OPTIMIZATION_VARIABLES'
+  responses_pointer = 'OPTIMIZATION_RESPONSES'
+  single
+    interface_pointer = 'OPTIMIZATION_INTERFACE'
+
+
+variables,
+  id_variables = 'OPTIMIZATION_VARIABLES'
+  scale_types= 'auto'
+  continuous_design = 1
+    descriptors   'expGIc_ads'
+    initial_point 3.0
+    upper_bounds  10.0
+    lower_bounds  0.1
+
+responses,
+  id_responses = 'OPTIMIZATION_RESPONSES'
+  response_descriptors 'objective_function'
+
+  objective_functions = 1
+  objective_function_scale_types = 'none'
+
+  #nonlinear_inequality_constraints  = 1
+  #nonlinear_inequality_scale_types = 'auto'
+
+  numerical_gradients
+    method_source dakota
+     interval_type central
+    #interval_type forward
+    fd_gradient_step_size = 3.E-1
+  # analytic_gradients
+  # no_gradients
+  no_hessians
+
+interface,
+  id_interface = 'OPTIMIZATION_INTERFACE'
+  fork
+    analysis_driver = 'driver.sh'
+    analysis_components = 'do'
+    # output_filter   = 'output_filter.py'
+    parameters_file = 'driver.in'
+    results_file    = 'driver.out'
+
+    aprepro
+    deactivate
+      # evaluation_cache  # Deactivation of the evaluation cache
+      restart_file      # Deactivation of the restart file
+      # active_set_vector # Deactivation of ASV requests. Use for driver simplicity
+
+    asynchronous
+      evaluation_concurrency = 400  # Concurrency of the evaluations
+      analysis_concurrency = 1      # Concurrency of the analysis drivers
+
+    work_directory
+      named 'iteration'
+      directory_tag     # Tag working directories with iteration number
+      file_tag          # Tag parameters and results files with iteration number
+      # directory_save    # Save work directories
+      # file_save         # Save parameters and results files
+      copy_files = 'driver.sh'
+                   'lancer_abaqus_dkt.sh'
+                   'paramodel.py'

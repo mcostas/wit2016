@@ -1,5 +1,5 @@
 # Fdb version 3
-["bibtex paper"] 1469549601 "paper.aux" "paper.bbl" "paper" 1469549602
+["bibtex paper"] 1469549601 "paper.aux" "paper.bbl" "paper" 1469550229
   "./references/references.bib" 1469546585 1485 5c085f460a80e36aab40f87dc83c4e91 ""
   "/home/mcostas/.texmf/bibtex/bst/witpress.bst" 1395679314 26659 447b478db792611db38a15064c88b363 ""
   "paper.aux" 1469549602 963 e9bcf60132b25ccf45f8fc9619964290 ""
@@ -7,7 +7,7 @@
   (generated)
   "paper.blg"
   "paper.bbl"
-["pdflatex"] 1469549601 "paper.tex" "/tmp/paper_build/paper.pdf" "paper" 1469549602
+["pdflatex"] 1469549601 "paper.tex" "/tmp/paper_build/paper.pdf" "paper" 1469550229
   "/home/mcostas/.texmf/tex/latex/witpress.cls" 1469546007 21277 767222065ea48e7327bab2e6b8f52d6f ""
   "/opt/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/opt/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmb10.tfm" 1136768653 1336 fb32298c2d61d0c4b59f3065fdd6def9 ""
@@ -118,17 +118,17 @@
   "/opt/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1463417405 1730376 ff644227f9de41ad499ef8c9e8035fc4 ""
   "/opt/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1463417450 915488 f25846b746e09f69c3a50d7889f567b0 ""
   "/opt/texlive/2015/texmf.cnf" 1463417396 559 aee2e1494ddf63b7684d601614d165fa ""
-  "/tmp/paper_build/epstopdf.cfg" 1469549600 232 fc80256be5025cb8b3a758bea0d5f4af ""
+  "/tmp/paper_build/epstopdf.cfg" 1469550228 232 fc80256be5025cb8b3a758bea0d5f4af ""
   "/tmp/paper_build/paper.aux" 1469549602 963 e9bcf60132b25ccf45f8fc9619964290 ""
   "/tmp/paper_build/paper.bbl" 1469549601 499 d248b61fb6beb5ac2628ed36a39c426d ""
-  "/tmp/paper_build/paper.tex" 1469549599 2194 fe42accd2a7f5eb5a13197447ed31319 ""
+  "/tmp/paper_build/paper.tex" 1469549861 2194 fe42accd2a7f5eb5a13197447ed31319 ""
   "paper.aux" 1469549602 963 e9bcf60132b25ccf45f8fc9619964290 ""
   "paper.bbl" 1469549601 499 d248b61fb6beb5ac2628ed36a39c426d "bibtex paper"
-  "paper.tex" 1469549599 2194 fe42accd2a7f5eb5a13197447ed31319 ""
+  "paper.tex" 1469549861 2194 fe42accd2a7f5eb5a13197447ed31319 ""
   (generated)
   "/tmp/paper_build/paper.pdf"
   "paper.pdf"
   "/tmp/paper_build/paper.log"
-  "paper.log"
   "/tmp/paper_build/paper.aux"
+  "paper.log"
   "paper.aux"
