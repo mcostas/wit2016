@@ -3,46 +3,53 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
 The style file: witpress.bst
 Database file #1: ./references/references.bib
-Warning--I didn't find a database entry for "brebbia84"
-You've used 1 entry,
+`journal' is a missing field, not a string, for entry Costas2013
+while executing---line 1327 of file witpress.bst
+Warning--empty journal in Costas2013
+Warning--empty year in Costas2013
+`journal' is a missing field, not a string, for entry JDiaz
+while executing---line 1327 of file witpress.bst
+Warning--empty journal in JDiaz
+Warning--empty year in JDiaz
+You've used 31 entries,
             2596 wiz_defined-function locations,
-            575 strings with 4381 characters,
-and the built_in function-call counts, 260 in all, are:
-= -- 19
-> -- 4
-< -- 0
-+ -- 2
-- -- 1
-* -- 11
-:= -- 40
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 2
+            765 strings with 10078 characters,
+and the built_in function-call counts, 21410 in all, are:
+= -- 1907
+> -- 340
+< -- 23
++ -- 134
+- -- 103
+* -- 1723
+:= -- 2340
+add.period$ -- 58
+call.type$ -- 31
+change.case$ -- 31
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 29
-empty$ -- 25
-format.name$ -- 1
-if$ -- 53
+cite$ -- 35
+duplicate$ -- 2260
+empty$ -- 2155
+format.name$ -- 129
+if$ -- 4870
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 7
-newline$ -- 6
-num.names$ -- 1
-pop$ -- 13
+int.to.str$ -- 31
+missing$ -- 300
+newline$ -- 96
+num.names$ -- 28
+pop$ -- 381
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2
+skip$ -- 424
 stack$ -- 0
-substring$ -- 8
-swap$ -- 15
-text.length$ -- 0
+substring$ -- 2561
+swap$ -- 995
+text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 11
-(There was 1 warning)
+warning$ -- 4
+while$ -- 127
+width$ -- 33
+write$ -- 267
+(There were 2 error messages)
