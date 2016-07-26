@@ -103,7 +103,7 @@ These sections allow comparison between cross sections as each case has the same
 
 \subsection{Triggering}
 
-In order to facilitate the generation of an stable collapse mechanism, crash boxes usually have some triggering in certain areas. It is based on certain controlled weakening of a section of the tube so, when crushing starts, the collapse will tend to a known pattern instead of others. This is done because this stable collapse patterns give the greatest \acrlong{SEA} with reduced \acrlong{Pk}.
+In order to facilitate the generation of an stable collapse mechanism, crash boxes usually have some triggering in certain areas. It is based on certain controlled weakening of a section of the tube so, when crushing starts, the collapse will tend to a known pattern instead of others. This is done because this stable collapse patterns give the greatest SEA with reduced Pk.
 
 In the present study, the trigger system consists on a series of holes placed at $\SI{20}{\mm}$ measured from the crushing end, with a diameter of $\SI{4}{\mm}$, as detailed on \cref{fig:crash_box}. They are meant to weaken the section in which they are applied in order to initiate collapse in that point. Collapse should start as a first wave in that cross section if triggering has been correctly applied.
 
@@ -429,7 +429,7 @@ A flowchart explaining the model creation process of the code is depicted in \cr
 \end{figure}
 
 
-\subsection{On the \acrlong{XFEM} and the explicit solver}
+\subsection{On the XFEM and the explicit solver}
 \label{sec:xfem}
 
 The XFEM, developed by \cite{Moes1999}, is a numerical technique based on the FEM which enriches the solution in order to be able to work with discontinuities in the defining equations produced by material interfaces (named ``weak discontinuities'') or by a crack (named ``strong discontinuities'').
@@ -464,7 +464,7 @@ The tie constraint included in Abaqus allowed non-coherent meshes between adhesi
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/mesh_detail_coh3d_comparison}
-	\caption[Detail of \acrlong{COH3D} mesh on the adhesive layer.]{Detail of \acrlong{COH3D} mesh on the adhesive layer (blue).}
+	\caption[Detail of COH3D mesh on the adhesive layer.]{Detail of COH3D mesh on the adhesive layer (blue).}
 	\label{fig:mesh_detail_coh3d_comparison}
 \end{figure}
 
@@ -545,10 +545,10 @@ Following \cite{Scattina2011}, mass scaling was applied to the adhesive's densit
 
 Increasing it one order of magnitude results on a SDT up to 30 times bigger. Increasing it two orders of magnitude results in very similar improvements, a bit worse perhaps. A factor of 40 was finally used, resulting in a SDT almost two orders of magnitude bigger than the original ones.
 
-\subsubsection{The \acrlong{COH3D}}
+\subsubsection{The COH3D}
 \label{sec:coh_elem}
 
-As \acrlong{COH3D} were specifically formulated for adhesive modelling, among other uses, they have been widely used to model this material, in Abaqus \cite{Sadowski2010, Sadowski2011, Sadowski2014, Alvarez2014} and in other software packages \cite{Sato2000, Carlberger2007, Loureiro2010, Scattina2011, Ghasemnejad2013}, although this is not the only existing formulation \cite{Sato2000, Greve2007, Liao2011, Yang2012}. Certain stress distributions cannot be properly modelled, such as in-plane compression, but these have no interest or negligible effects. In Abaqus, these elements are denominated \acrshort{COH3D} and require that:
+As COH3D were specifically formulated for adhesive modelling, among other uses, they have been widely used to model this material, in Abaqus \cite{Sadowski2010, Sadowski2011, Sadowski2014, Alvarez2014} and in other software packages \cite{Sato2000, Carlberger2007, Loureiro2010, Scattina2011, Ghasemnejad2013}, although this is not the only existing formulation \cite{Sato2000, Greve2007, Liao2011, Yang2012}. Certain stress distributions cannot be properly modelled, such as in-plane compression, but these have no interest or negligible effects. In Abaqus, these elements are denominated \acrshort{COH3D} and require that:
 \begin{itemize}
 	\item There can only be a single layer of elements.
 
@@ -582,7 +582,7 @@ The contact interaction was eventually substituted by a tie constraint between t
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/union}
-	\caption[Cross section detail of the adhesive layer modelled with \acrlongpl{COH3D} between two adherends modelled with shell elements.]{Cross section detail of the adhesive layer modelled with \acrlongpl{COH3D} between two adherends modelled with shell elements. Taken from \cite{Scattina2011}.}
+	\caption[Cross section detail of the adhesive layer modelled with COH3D between two adherends modelled with shell elements.]{Cross section detail of the adhesive layer modelled with COH3D between two adherends modelled with shell elements. Taken from \cite{Scattina2011}.}
 	\label{fig:union}
 \end{figure}
 
