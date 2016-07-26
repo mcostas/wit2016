@@ -1,6 +1,7 @@
 \documentclass[cmfonts]{witpress}
 \usepackage{todonotes}
 \usepackage{siunitx}
+\usepackage{amsmath}
 \usepackage{cleveref}
 \bibliographystyle{witpress}
 
@@ -241,12 +242,10 @@ On the other hand, the elastic modulus in the normal direction can also be calcu
 \begin{table}
 	\centering
 	\begin{tabular}{llrl}
-		\toprule
 		Parameter & Description & Value & \\
-		\midrule
+		
 		$E_{N}$ & Stiffness in normal direction & $\num{5e9}$ & $\si{\kN/\m^2}$ \\
 		$E_{T}$ & Stiffness in an in-plane direction & $\num{8e7}$ & $\si{\kN/\m^2}$ \\
-		\bottomrule
 	\end{tabular}
 	\caption[Loctite Hysol 9514 parameters.]{Loctite Hysol 9514 parameters. Taken from \cite{Scattina2011}.}
 	\label{tab:ads_params}
@@ -283,18 +282,18 @@ where $\sigma_{n}^{0}$, $\tau_{II}^{0}$ and $\tau_{III}^{0}$ represent the pure 
 	\centering
 	\begin{tabular}{llrl}
 
-		\toprule
+		
 
 		Parameter & Description & Value & \\
 
-		\midrule
+		
 
 		$G_{Ic}$ & Energy release rate for mode I & $\num{2028}$ & $\si{\J/\m^2}$ \\
 		$G_{IIc}$ & Energy release rate for mode II & $\num{11853}$ & $\si{\J/\m^2}$ \\
 		$\sigma_{n}^{0}$ & Peak traction in normal direction & $\num{130}$ & $\si{\MPa}$ \\
 		$\tau_{II}^{0}$ & Peak traction in tangential direction & $\num{42.5}$ & $\si{\MPa}$ \\
 
-		\bottomrule
+		
 
 	\end{tabular}
 	\caption[Summary of Loctite Hysol 9514 damage parameters.]{Summary of Loctite Hysol 9514 damage parameters. Taken from \cite{Scattina2011}.}
@@ -374,7 +373,7 @@ The elastic branch of the adherend stress-strain curve is defined as linear, wit
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/steel}
-	\caption{Steel stress-strain curve up to $\num{0.6}\text{\textperthousand}$ strain rate.}
+	\caption{Steel stress-strain curve up to $\num{0.0006}$ strain rate.}
 	\label{fig:steel}
 \end{figure}
 
@@ -500,22 +499,22 @@ Finally, \cref{fig:mesh} shows the used mesh for the crash tube, which has more 
 	\centering
 	\begin{tabular}{ll p{3cm} rr}
 
-		\toprule
+		
 
 		Part & Element type & Mesh type & Elements & Nodes \\
 
-		\midrule
+		
 
 		Adherend & S4R (S3) & Structured (with free partitions) & $3844$ ($33$) & $4010$ \\
 		Adhesive & COH3D & Structured & $1200$ & $2718$ \\
 		Rigid plates & R3D4 & Free & $10$ & $15$ \\
 		Stabilizing box & R3D4 & Structured & $448$ & $480$ \\
 
-		\midrule
+		
 
 		Total &&& $10622$ & $13966$ \\
 
-		\bottomrule
+		
 
 	\end{tabular}
 	\caption[Mesh summary.]{Mesh summary. Given values correspond to each instance of that part. In the adherend case, there is a seven element recount difference between each instance, probably due to the free mesh control in some partitions. The average value is given.}
@@ -525,7 +524,7 @@ Finally, \cref{fig:mesh} shows the used mesh for the crash tube, which has more 
 \subsubsection{Mass scaling}
 \label{sec:mass_scaling}
 
-As \cite{Hale} explains, in explicit dynamic modelling, the total running time depends both on the model size (mesh size and total modelled time span) and in the time step size (${\Delta}t$). \Acrfull{SDT} is the maximum time step that still grants the numerical stability of the calculations, by supressing the possibility to a mechanical stress wave to go through more than one element in each time step. This condition is known as the Courant condition:
+As \cite{Hale} explains, in explicit dynamic modelling, the total running time depends both on the model size (mesh size and total modelled time span) and in the time step size (${\Delta}t$). SDT is the maximum time step that still grants the numerical stability of the calculations, by supressing the possibility to a mechanical stress wave to go through more than one element in each time step. This condition is known as the Courant condition:
 
 \begin{equation}
 {\Delta}t_{stable} \leq f \left[\frac{h}{c}\right]_{min} ;
@@ -548,7 +547,7 @@ Increasing it one order of magnitude results on a SDT up to 30 times bigger. Inc
 \subsubsection{The COH3D}
 \label{sec:coh_elem}
 
-As COH3D were specifically formulated for adhesive modelling, among other uses, they have been widely used to model this material, in Abaqus \cite{Sadowski2010, Sadowski2011, Sadowski2014, Alvarez2014} and in other software packages \cite{Sato2000, Carlberger2007, Loureiro2010, Scattina2011, Ghasemnejad2013}, although this is not the only existing formulation \cite{Sato2000, Greve2007, Liao2011, Yang2012}. Certain stress distributions cannot be properly modelled, such as in-plane compression, but these have no interest or negligible effects. In Abaqus, these elements are denominated \acrshort{COH3D} and require that:
+As COH3D were specifically formulated for adhesive modelling, among other uses, they have been widely used to model this material, in Abaqus \cite{Sadowski2010, Sadowski2011, Sadowski2014, Alvarez2014} and in other software packages \cite{Sato2000, Carlberger2007, Loureiro2010, Scattina2011, Ghasemnejad2013}, although this is not the only existing formulation \cite{Sato2000, Greve2007, Liao2011, Yang2012}. Certain stress distributions cannot be properly modelled, such as in-plane compression, but these have no interest or negligible effects. In Abaqus, these elements are denominated COH3D and require that:
 \begin{itemize}
 	\item There can only be a single layer of elements.
 
