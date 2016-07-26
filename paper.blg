@@ -3,44 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
 The style file: witpress.bst
 Database file #1: ./references/references.bib
-You've used 2 entries,
+Warning--I didn't find a database entry for "brebbia84"
+You've used 1 entry,
             2596 wiz_defined-function locations,
-            584 strings with 4657 characters,
-and the built_in function-call counts, 1002 in all, are:
-= -- 75
-> -- 24
-< -- 2
-+ -- 9
-- -- 7
-* -- 64
-:= -- 117
-add.period$ -- 4
-call.type$ -- 2
-change.case$ -- 1
+            575 strings with 4381 characters,
+and the built_in function-call counts, 260 in all, are:
+= -- 19
+> -- 4
+< -- 0
++ -- 2
+- -- 1
+* -- 11
+:= -- 40
+add.period$ -- 2
+call.type$ -- 1
+change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 99
-empty$ -- 104
-format.name$ -- 9
-if$ -- 229
+cite$ -- 1
+duplicate$ -- 29
+empty$ -- 25
+format.name$ -- 1
+if$ -- 53
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 22
-newline$ -- 9
-num.names$ -- 4
-pop$ -- 35
+int.to.str$ -- 1
+missing$ -- 7
+newline$ -- 6
+num.names$ -- 1
+pop$ -- 13
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 22
+skip$ -- 2
 stack$ -- 0
-substring$ -- 59
-swap$ -- 63
-text.length$ -- 2
+substring$ -- 8
+swap$ -- 15
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 11
-width$ -- 3
-write$ -- 21
+while$ -- 2
+width$ -- 2
+write$ -- 11
+(There was 1 warning)

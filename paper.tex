@@ -1,5 +1,6 @@
 \documentclass[cmfonts]{witpress}
 \usepackage{todonotes}
+\usepackage{cleveref}
 \bibliographystyle{witpress}
 
 
@@ -20,7 +21,34 @@ This work describes an investigation on the structural optimization of the crash
 \emph{Keywords: crashworthiness, injuries reduction, size optimization, surrogate models.}
 
 \section{Introduction}
-\cite{funke84}
+Security is a key issue on vehicle design nowadays, and crashworthy elements are required to absorb the energy during a crash and minimize the effects on the occupants. Crash boxes are devices equipped by vehicles that are designed to absorb the impact through deformation in order to protect the vehicle passengers. They are usually tube shaped and made of several pieces that require bonding. This bonding can be also a valid dissipation mechanism, apart from being a way of obtaining low-weight unions.
+
+On the other hand, structural adhesives have improved their mechanical properties in recent years and now can be used with confidence in heavy duty applications. Adhesive unions present themselves as a promising solution for bonding manufacture, thanks to their properties and last years improvements on these. Interest on them is also raising up in scientific fields thanks to these enhancements and to the recent development of validated numerical models.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{./figures/IMG_CUTRES/comparison}
+	\caption[Qualitative strength and cost comparison of different joining solutions.]{Qualitative strength and cost comparison of different joining solutions. Taken from \cite{superyacht}.}
+	\label{fig:comparison}
+\end{figure}
+
+As \cref{fig:comparison} illustrates, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. Although other solutions, like welding, may compete in strength, adhesives are much more inexpensive than other solutions. It should be recalled that this figure only aims to give a qualitative idea of this comparison for a particular manufacturer's point of view, and should not be taken as a fact.
+
+In order to check adhesive's suitability for their use in crashworthy elements, this study develops numerical models of adhesively bonded crash boxes subjected to impact load  using the FEM. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
+
+The present study aims to:
+
+\begin{itemize}
+	\item Determining an efficient adhesive modellization for its use in numerical models of adhesive joints. This modellization would also serve for studying hybrid bonding which implies the use of adhesives with other bonding solutions at the same time, such as welding or riveting.
+
+	\item Checking the suitability of adhesives for their use in crash boxes or as a manner of improving other union types performance in that same devices.
+
+	\item Generating a parametric model that would serve for sensitivity analysis and  optimization of the tube geometry by using the scripting capabilities of the finite element package employed.
+\end{itemize}
+
+In this introductory chapter, the most remarkable adhesive properties of interest are commented, along with experimental and numerical analysis that have been performed in the literature, with a later focus on their use in the field of crash boxes.
+
+The present document is structured in three more chapters beyond this point, explaining the realized model, discussing the obtained results and drawing some conclusions, respectively. Two appendices are added at the end including some other aspects, such as the Python code developed for this study or the manufacturer's catalog information regarding to the selected adhesive.
+
 \section{Finite element model}
 \cite{brebbia84}
 \todo{Poner bien las referencias (citet pero que funcione)}
