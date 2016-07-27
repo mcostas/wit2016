@@ -37,46 +37,25 @@ On the other hand, structural adhesives have improved their mechanical propertie
 As shown in \Cref{fig:comparison}, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. In order to check adhesive's suitability for their use in crashworthy elements, this research develops numerical models of adhesively bonded crash boxes subjected to impact loads using finite element models. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
 
 \section{Finite element model}
-The modeled crash box consists of two adherend plates made of steel that create a tube of square section by being bonded together with an epoxy adhesive. The union is practiced on the surface of two flanges on each adherend side. Adhesive failure and adherend yielding are taken into account.
-
-The tube is crushed between two rigid plates, one fixed and the other moving at impact speed. In order to ease the formation of a stable collapse mechanism, triggering is applied on a certain section near the frontal end of the tube. The trigger consists on a small change on a particular zone of the tube in order to provoke the initiation of a desired local collapse in that zone, aiming to lead to a certain global collapse mechanism; examples include indentations or holes near the head end. In addition, some models count with rivets to avoid certain unstable failures.
-
-\subsection{Geometry}
-
-In order to ease model comparation and validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modelled by \cite{Scattina2011}.
-
-Among the five different square section layouts tested by \cite{Peroni2009}, the following two sections, depicted in \cref{fig:tubes}, were modelled in the present study:
-\begin{itemize}
-	\item Double hat section \cite{Lee2006, Yang2012, Yamashita2013}.
-	\item Top-hat \cite{Scattina2011, Yamashita2013}.
-	%\item Asymetric mid-sides bonding.
-\end{itemize}
+The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is practiced on the surface of two flanges on each adherend side. In order to ease the model validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modeled by \cite{Scattina2011}. In particular, the two sections depicted in \cref{fig:tubes} are modeled in the present study.
 
 \begin{figure}
 	\centering
-	\begin{minipage}[b]{.45\columnwidth}
-		\centering
-		\includegraphics[height=42mm]{figures/IMG_CUTRES/A_section}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{.45\columnwidth}
-		\centering
-		\includegraphics[height=42mm]{figures/IMG_CUTRES/B_section}
-	\end{minipage}
-\\[10mm]
-\begin{minipage}[b]{.4\linewidth}
+\begin{minipage}[b]{.45\linewidth}
 	\centering
-	\includegraphics[height=135mm]{figures/IMG_CUTRES/A_tube}
+	\includegraphics[height=80mm]{figures/IMG_CUTRES/A_tube}
 \end{minipage}
 \hfill
-\begin{minipage}[b]{.4\linewidth}
+\begin{minipage}[b]{.45\linewidth}
 	\centering
-	\includegraphics[height=135mm]{figures/IMG_CUTRES/B_tube}
+	\includegraphics[height=80mm]{figures/IMG_CUTRES/B_tube}
 \end{minipage}
-
-	\caption[Modelled tubes and corresponding cross sections.]{Modelled tubes and corresponding cross sections. Top-hat section with adhesive in red (left), and double hat section with adhesive in blue (right).}
+	\caption[Modeled tubes and corresponding cross sections.]{Modeled tubes and corresponding cross sections. Top-hat section with adhesive in red (left), and double hat section with adhesive in blue (right).}
 	\label{fig:tubes}
 \end{figure}
+
+The tube is crushed between two rigid plates, one fixed and the other moving at impact speed. In order to ease the formation of a stable collapse mechanism, a triggering is machined near the front end of the tube. The trigger starts a desired collapse mode in that area.
+
 
 These sections allow comparison between cross sections as each case has the same box perimeter and the same bonding surface \cite{Peroni2009}. In addition, two of the union layouts tested by \cite{Peroni2009} were discarded due to serious bond casting difficulties. Measures of three of the tubes tested by these authors are depicted in \cref{fig:crash_box}.
 

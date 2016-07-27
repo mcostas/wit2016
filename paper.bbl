@@ -15,22 +15,6 @@ Scattina, A., Peroni, L., Peroni, M. \& Avalle, M., Numerical analysis of
   hybrid joining in car body applications. \emph{Journal of Adhesion Science
   and Technology}, \textbf{25(18)}, pp. 2409--2433, 2011.
 
-\bibitem{Lee2006}
-Lee, M.H., Kim, H.Y. \& Oh, S.I., Crushing test of double hat-shaped members of
-  dissimilar materials with adhesively bonded and self-piercing riveted joining
-  methods. \emph{Thin-Walled Structures}, \textbf{44(4)}, pp. 381--386, 2006.
-
-\bibitem{Yang2012}
-Yang, X., Xia, Y., Zhou, Q., Wang, P.C. \& Wang, K., Modeling of high strength
-  steel joints bonded with toughened adhesive for vehicle crash simulations.
-  \emph{International Journal of Adhesion and Adhesives}, \textbf{39}, pp.
-  21--32, 2012.
-
-\bibitem{Yamashita2013}
-Yamashita, M., Kenmotsu, H. \& Hattori, T., Dynamic crush behavior of
-  adhesive-bonded aluminum tubular structure - experiment and numerical
-  simulation. \emph{Thin-Walled Structures}, \textbf{69}, pp. 45--53, 2013.
-
 \bibitem{Abedrabbo2009}
 Abedrabbo, N., Mayer, R., Thompson, A., Salisbury, C., Worswick, M. \& van
   Riemsdijk, I., Crash response of advanced high-strength steel tubes:
@@ -150,6 +134,12 @@ Liao, L., Kobayashi, T., Sawa, T. \& Goda, Y., 3-d fem stress analysis and
   strength evaluation of single-lap adhesive joints subjected to impact tensile
   loads. \emph{International Journal of Adhesion and Adhesives},
   \textbf{31(7)}, pp. 612--619, 2011.
+
+\bibitem{Yang2012}
+Yang, X., Xia, Y., Zhou, Q., Wang, P.C. \& Wang, K., Modeling of high strength
+  steel joints bonded with toughened adhesive for vehicle crash simulations.
+  \emph{International Journal of Adhesion and Adhesives}, \textbf{39}, pp.
+  21--32, 2012.
 
 \bibitem{Alfano2001}
 Alfano, G. \& Crisfield, M., Finite element interface models for the
