@@ -59,26 +59,11 @@ The tube is crushed between two rigid plates, one fixed and the other moving at 
 	\label{fig:general}
 \end{figure}
 
-In the bibliography, impact tests are often substituted by quasi-static tests, due to the similarities between both with materials with low sensitivity to strain ratio. References including actual impact tests usually compare both situations \cite{Goglio2008, Peroni2009}, concluding that these two ways of facing this problem are not always equivalent. In this study, a full impact simulation was carried out. The objective is to develop systems that behave in the same manner both in static or low velocity tests and on impact tests.
-
-The impact plate moved during the simulation at $\SI{10}{\m/\s}$ on a total distance equal to half of the total tube's length, resulting in a total analysis time of $\SI{0.015}{\s}$ long. Rotational degrees of freedom were fixed on the frontal plate.
-
-The rear plate had all degrees of freedom restrained. The reaction force that appeared on this point was used to measure Ea, as explained later on (see \cref{sec:Ea}).
+The impact plate moved during the simulation at $\SI{10}{\m/\s}$ on a total distance equal to half of the total tube's length, resulting in a total analysis time of $\SI{0.015}{\s}$. Rotational degrees of freedom were fixed on the frontal plate. The rear plate had all degrees of freedom restrained.
 
 The last $\SI{5}{\mm}$ of the crash tube had all degrees of freedom fixed (see \cref{fig:general}), except displacement on the impact direction in order to allow the reaction force measurement commented before. This way, numerical issues due to excesive unrestrained degrees of freedom on the whole tube were prevented.
 
-
-Peeling problems were found near the impact head end during the development of the study. \cite{Peroni2009} solved this situation by adding two rivets on the bonded flanges at the triggered section in order to avoid excesive debonding on that part of the tube in the initial phases of the impact and, thus, prevent critical situations. In this study, it was substituted by a $\SI{2}{\mm}$-diameter spot-weld point in the same location, as it was a better-known technique for the author and had a very similar effect on the model.
-
-% INSERT IMAGE TO EXPLAIN LOCATION
-
-The spot weld was made up of steel, using its elastic modulus as stiffness and the steel yielding stress on the normal direction as the failure criterion. Several sizes for the spot-weld points were tried up to an average solution which wasn't either too strong to obviate the adhesive's contribution, neither too weak to not prevent the critical failure.
-
-
-
-It has half of the length of the tube and moved together with the impact plate, so the crash tube would end confined between the plates on both ends and the stabilizing box by the end of the simulation. 
-
-The rationale behind this is that in an actual vehicle crash, this device would be among many other vehicle parts ---such as the motor, which is very rigid---, restraining the crash box movements in many directions. It also aims to prevent global buckling problems.
+Peeling problems were found near the impact head end during the development of the study. \cite{Peroni2009} solved this situation by adding two rivets on the bonded flanges at the triggered section in order to avoid excesive debonding on that part of the tube in the initial phases of the impact and, thus, prevent critical situations. In this study, this was simulated by a $\SI{2}{\mm}$-diameter spot-weld at the same location.
 
 \subsection{Materials}
 
