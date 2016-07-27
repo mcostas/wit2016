@@ -76,44 +76,7 @@ Peeling problems were found near the impact head end during the development of t
 
 The model is made up of two different materials: the adherends of the tube are made of steel and the adhesive is the epoxy-based, heat-cured Loctite Hysol 9514.
 
-According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}{\MPa}$, although this parameter is subject to variation depending both in cure temperature and time. The bulk modulus is $\SI{1460}{\MPa}$ and the adhesive's density is $\SI{1.30}{\tonne/\m^3}$ \cite{manufCatalog}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/catalog_temp}
-	\caption[Cure temperature and time dependency of the Loctite Hysol 9514 shear strength.]{Cure temperature and time dependency of the Loctite Hysol 9514 shear strength. Taken from \cite{manufCatalog}.}
-	\label{fig:catalog_temp}
-\end{figure}
-
-
-The constitutive behaviour was supposed to be isotropic linear elastic \cite{SernaMoreno2015} up to failure start. An uncoupled traction elastic behaviour \cite{Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014} on 3D cohesive finite elements was the best fit for modelling adhesives \cite{Abaqus613Manual}. \Cref{sec:coh_elem} deepens on the element formulation and properties. \Cref{eq:traction} shows how this model works.
-
-\begin{equation}
-\begin{Bmatrix}
-t_n \\
-t_s \\
-t_t \\
-\end{Bmatrix}
-=
-\begin{bmatrix}
-E_{nn} & & \\
-& E_{ss} & \\
-& & E_{tt} \\
-\end{bmatrix}
-\begin{Bmatrix}
-\varepsilon_n \\
-\varepsilon_s \\
-\varepsilon_t \\
-\end{Bmatrix} ;
-\label{eq:traction}
-\end{equation}
-where $t_n$ is the nominal traction in the normal direction; $t_s$ and $t_t$ are the nominal tractions in both shear directions; $E_{nn}$, $E_{ss}$ and $E_{tt}$ are the corresponding stiffnesses; and $\varepsilon_n$, $\varepsilon_s$ and $\varepsilon_t$ are the corresponding nominal strains \cite{Abaqus613Manual}. $E_{ss}$ is considered equal to $E_{tt}$, and this value will be refered as $E_{T}$ onwards. In order to match this nomenclature, $E_{nn}$ will be refered as $E_{N}$.
-
-It is remarked that \cref{eq:traction} relates forces and strains ---not forces and displacements, or stresses and strains, as usual---, implying thus that the value of $E_{N}$ depends on the thickness of the layer. As \cref{eq:traction} refers to each element, the value of $E_{N}$ depends not only on the mentioned geometry, but also on the mesh. In this case, it can be calculated by dividing the elastic modulus, $E$, by the adhesive layer thickness.
-
-This may bring up some problems in those cases in which the adhesive layer has a non-uniform thickness, or very different element lengths between different zones of the material. In our case, elements have fairly uniform in-plane sizes, and the layer has a uniform thickness for the normal direction.
-
-The constitutive model expresed in \cref{eq:traction} is an orthotropic model that only applies in one direction: the stack direction, as refered in \cref{sec:coh_elem}. The reduced adhesive layer thickness makes in-plane compression negligible. Uncoupled behaviour of the elastic components is not considered \cite{Scattina2011}.
+According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}{\MPa}$, although this parameter is subject to variation depending both in cure temperature and time. The bulk modulus is $\SI{1460}{\MPa}$ and the adhesive's density is $\SI{1.30}{\tonne/\m^3}$ \cite{manufCatalog}. The constitutive behavior was supposed to be isotropic linear elastic \cite{SernaMoreno2015} up to failure start. An uncoupled traction elastic behavior \cite{Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014} on 3D cohesive finite elements was chosen.
 
 \cite{Scattina2011} obtained adhesive stiffnesses through the inverse method, which are summarized in \cref{tab:ads_params}. These same parameters were used in the present study, as their results could be validated with the model.
 
