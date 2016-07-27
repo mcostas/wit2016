@@ -5,6 +5,8 @@
 \usepackage{bm}
 \usepackage{cleveref}
 \usepackage{amssymb}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
 % \usepackage{natbib}
 \bibliographystyle{witpress}
 
@@ -48,13 +50,32 @@ The modeled crash box consists of two adherend cold-formed sheets made of steel 
 	\label{fig:crash_box}
 \end{figure}
 
+\begin{figure}[ht]
+  \centering
+  \begin{minipage}[b]{.48\linewidth}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/IMG_CUTRES/medidas_cb}
+    \subcaption{Dimensions of the modeled crash boxes, in millimeters. Taken from \cite{Peroni2009}.}
+    \label{fig:crash_box}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{.48\linewidth}
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/IMG_CUTRES/general_transp}
+    \subcaption{General view of the model with the bounding box.}
+    \label{fig:general}
+  \end{minipage}
+  \caption{Dimensions of the studied crash boxes and view of the finite element model including a bounding box.}
+  \label{fig:modelo}
+\end{figure}
+
 \todo{centrar figuras}
 
 The tube is crushed between two rigid plates, one fixed and the other moving at impact speed (see \Cref{fig:general}). In order to ease the formation of a stable collapse mechanism, a triggering is machined near the front end of the tube. The trigger starts a desired collapse mode in that area. Due to the high slenderness of the tube, difficulties were found in order to achieve stable collapse mechanisms. On their place, tubes diverted from their axis. Trying to avoid these critical situations, four rigid plates on a rectangular section around the crash tube were added to the model as a bounding box. Its section was $\num{100}\times\SI{60}{\mm}$ and co-centered with the crash box.
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/IMG_CUTRES/general_transp}
+	\includegraphics[width=0.4\textwidth]{figures/IMG_CUTRES/general_transp}
 	\caption{General view of the model with the bounding box.}
 	\label{fig:general}
 \end{figure}
