@@ -12,7 +12,7 @@
 
 \title{Improvement of crash forces in structures using optimization tools.}
 
-\author{L. E. Romera, M. Costas, J. Paz, J. D\'iaz, S. Hern\'andez.}
+\author{L. E. Romera, L. Pire, M. Costas, J. Paz, J. D\'iaz, S. Hern\'andez.}
 
 \address{Structural Mechanics Group, Universidade da Coru\~na, Spain.}
 
@@ -24,40 +24,24 @@ This work describes an investigation on the structural optimization of the crash
 \emph{Keywords: crashworthiness, injuries reduction, size optimization, surrogate models.}
 
 \section{Introduction}
-Security is a key issue on vehicle design nowadays, and crashworthy elements are required to absorb the energy during a crash and minimize the effects on the occupants. Crash boxes are devices equipped by vehicles that are designed to absorb the impact through deformation in order to protect the vehicle passengers. They are usually tube shaped and made of several pieces that require bonding. This bonding can be also a valid dissipation mechanism, apart from being a way of obtaining low-weight unions.
+Occupant safety is a key issue on vehicle and aircraft design nowadays, and crashworthy elements are required to absorb the energy during a crash and minimize the effects on the occupants. Aircraft and vehicles are nowadays provided with crash boxes to absorb the impact energy through deformation in order to protect the passengers. They are usually tube-shaped and made of several parts that require some kind of bonding.
 
-On the other hand, structural adhesives have improved their mechanical properties in recent years and now can be used with confidence in heavy duty applications. Adhesive unions present themselves as a promising solution for bonding manufacture, thanks to their properties and last years improvements on these. Interest on them is also raising up in scientific fields thanks to these enhancements and to the recent development of validated numerical models.
+On the other hand, structural adhesives have improved their mechanical properties in recent years and can be now used with confidence in heavy duty applications. Interest on them is also raising up in scientific fields thanks to these enhancements and to the recent development of validated numerical models.
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{./figures/IMG_CUTRES/comparison}
+	\includegraphics[width=\linewidth]{./figures/IMG_CUTRES/comparison}
 	\caption[Qualitative strength and cost comparison of different joining solutions.]{Qualitative strength and cost comparison of different joining solutions. Taken from \cite{superyacht}.}
 	\label{fig:comparison}
 \end{figure}
 
-As \cref{fig:comparison} illustrates, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. Although other solutions, like welding, may compete in strength, adhesives are much more inexpensive than other solutions. It should be recalled that this figure only aims to give a qualitative idea of this comparison for a particular manufacturer's point of view, and should not be taken as a fact.
-
-In order to check adhesive's suitability for their use in crashworthy elements, this study develops numerical models of adhesively bonded crash boxes subjected to impact load  using the FEM. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
-
-The present study aims to:
-
-\begin{itemize}
-	\item Determining an efficient adhesive modellization for its use in numerical models of adhesive joints. This modellization would also serve for studying hybrid bonding which implies the use of adhesives with other bonding solutions at the same time, such as welding or riveting.
-
-	\item Checking the suitability of adhesives for their use in crash boxes or as a manner of improving other union types performance in that same devices.
-
-	\item Generating a parametric model that would serve for sensitivity analysis and  optimization of the tube geometry by using the scripting capabilities of the finite element package employed.
-\end{itemize}
-
-In this introductory chapter, the most remarkable adhesive properties of interest are commented, along with experimental and numerical analysis that have been performed in the literature, with a later focus on their use in the field of crash boxes.
-
-The present document is structured in three more chapters beyond this point, explaining the realized model, discussing the obtained results and drawing some conclusions, respectively. Two appendices are added at the end including some other aspects, such as the Python code developed for this study or the manufacturer's catalog information regarding to the selected adhesive.
+As shown in \Cref{fig:comparison}, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. In order to check adhesive's suitability for their use in crashworthy elements, this research develops numerical models of adhesively bonded crash boxes subjected to impact loads using finite element models. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
 
 \section{Finite element model}
-The modelled crash box consists of two adherend plates made of steel that create a tube of square section by being bonded together with adhesive. The union is practiced on the surface of two flanges on each adherend side. Adhesive failure and adherend plastification are taken into account.
+The modeled crash box consists of two adherend plates made of steel that create a tube of square section by being bonded together with an epoxy adhesive. The union is practiced on the surface of two flanges on each adherend side. Adhesive failure and adherend yielding are taken into account.
 
 The tube is crushed between two rigid plates, one fixed and the other moving at impact speed. In order to ease the formation of a stable collapse mechanism, triggering is applied on a certain section near the frontal end of the tube. The trigger consists on a small change on a particular zone of the tube in order to provoke the initiation of a desired local collapse in that zone, aiming to lead to a certain global collapse mechanism; examples include indentations or holes near the head end. In addition, some models count with rivets to avoid certain unstable failures.
 
-\section{Geometry}
+\subsection{Geometry}
 
 In order to ease model comparation and validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modelled by \cite{Scattina2011}.
 
@@ -103,7 +87,7 @@ These sections allow comparison between cross sections as each case has the same
 	\label{fig:crash_box}
 \end{figure}
 
-\subsection{Triggering}
+\subsubsection{Triggering}
 
 In order to facilitate the generation of an stable collapse mechanism, crash boxes usually have some triggering in certain areas. It is based on certain controlled weakening of a section of the tube so, when crushing starts, the collapse will tend to a known pattern instead of others. This is done because this stable collapse patterns give the greatest SEA with reduced Pk.
 
@@ -132,7 +116,7 @@ In the present study, the trigger system consists on a series of holes placed at
 % Comment other triggers
 This is not the only trigger design, as it can be seen on \cref{fig:different_trig}. Initial deformation of a near-head cross section is a common solution \cite{Abedrabbo2009, Scattina2011, Costas2013}, although it may present some problems, such as beginnings of peeling near the triggered section, either provoked by the trigger process itself or either due to easing this peeling in the first phases of the impact.
 
-\subsection{Impact conditions}  % Speed, etc
+\subsubsection{Impact conditions} % Speed, etc
 \label{sec:impact}
 
 The tube was placed between two circular rigid plates, as it can be seen on \cref{fig:general}, one next to the impact head and the rear one next to the opposite end. The impact plate had a initial separation of $\SI{1}{\mm}$ to avoid simulation problems.
@@ -162,7 +146,7 @@ The tube was placed between two circular rigid plates, as it can be seen on \cre
 	\label{fig:general}
 \end{figure}
 
-In the bibliography, impact tests are often substituted by quasi-static tests, due to the similarities between both with materials with low sensitivity to strain ratio. References including actual impact tests usually compare both situations \cite{Goglio2008, Peroni2009}, concluding that these two ways of facing this problem are not always equivalent. In this study, a full impact simulation was carried out. The objective is to develop systems that behave in the same manner both in static or low velocity tests and on impact  tests.
+In the bibliography, impact tests are often substituted by quasi-static tests, due to the similarities between both with materials with low sensitivity to strain ratio. References including actual impact tests usually compare both situations \cite{Goglio2008, Peroni2009}, concluding that these two ways of facing this problem are not always equivalent. In this study, a full impact simulation was carried out. The objective is to develop systems that behave in the same manner both in static or low velocity tests and on impact tests.
 
 The impact plate moved during the simulation at $\SI{10}{\m/\s}$ on a total distance equal to half of the total tube's length, resulting in a total analysis time of $\SI{0.015}{\s}$ long. Rotational degrees of freedom were fixed on the frontal plate.
 
@@ -170,15 +154,13 @@ The rear plate had all degrees of freedom restrained. The reaction force that ap
 
 The last $\SI{5}{\mm}$ of the crash tube had all degrees of freedom fixed (see \cref{fig:general}), except displacement on the impact direction in order to allow the reaction force measurement commented before. This way, numerical issues due to excesive unrestrained degrees of freedom on the whole tube were prevented.
 
-\subsubsection{Rivets}
 
 Peeling problems were found near the impact head end during the development of the study. \cite{Peroni2009} solved this situation by adding two rivets on the bonded flanges at the triggered section in order to avoid excesive debonding on that part of the tube in the initial phases of the impact and, thus, prevent critical situations. In this study, it was substituted by a $\SI{2}{\mm}$-diameter spot-weld point in the same location, as it was a better-known technique for the author and had a very similar effect on the model.
 
 % INSERT IMAGE TO EXPLAIN LOCATION
 
-The spot weld was made up of steel, using its elastic modulus as stiffness and the steel plastification stress on the normal direction as the failure criterion. Several sizes for the spot-weld points were tried up to an average solution which wasn't either too strong to obviate the adhesive's contribution, neither too weak to not prevent the critical failure.
+The spot weld was made up of steel, using its elastic modulus as stiffness and the steel yielding stress on the normal direction as the failure criterion. Several sizes for the spot-weld points were tried up to an average solution which wasn't either too strong to obviate the adhesive's contribution, neither too weak to not prevent the critical failure.
 
-\subsubsection{Stabilizing box}
 
 Due to the crushing conditions and the relation between tube length and cross section area, strong difficulties were found in order to achieve stable collapse mechanisms. On their place, tubes diverted from their axis ---other found problems not related with the tube bending are solved through the use of rivets---. Trying to avoid these critical situations, four rigid plates on a rectangular section among the crash tube were added to the model as a stabilizing box.
 
@@ -186,13 +168,13 @@ It has half of the length of the tube and moved together with the impact plate, 
 
 The rationale behind this is that in an actual vehicle crash, this device would be among many other vehicle parts ---such as the motor, which is very rigid---, restraining the crash box movements in many directions. It also aims to prevent global buckling problems.
 
-\section{Materials}
+\subsection{Materials}
 
 The model is made up of two different materials, together with several already mentioned ideally rigid parts (see \cref{sec:impact}). The adherends of the tube are made of elastic-plastic steel. The adhesive is an elastic material only considering one normal and two shear directions with a damage formulation.
 
 It must be pointed out that the use of several material with different behaviour formulations including crack formation implies the use of the XFEM. Although it will have some implications in the present section ---and more specifically on \cref{sec:damage}---, the XFEM will be explained afterwards in \cref{sec:xfem} in order to keep some coherence in the explanation.
 
-\subsection{Adhesive}
+\subsubsection{Adhesive}
 Loctite Hysol 9514 \cite{manufCatalog} was the chosen adhesive for the bonding, for its shown interest by many other authors for structural bonding \cite{Sadowski2010, Scattina2011, SernaMoreno2015}, making it an \textit{a priori} good candidate for the studied application. It is a monocomponent epoxy adhesive which requires heat curing processes in the union cast.
 
 According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}{\MPa}$, although this parameter is subject to variation depending both in cure temperature and time. Dependency can be seen on \cref{fig:catalog_temp}. Given value corresponds to a $\SI{150}{\celsius}$ cure for $\SI{30}{\min}$. The bulk modulus is $\SI{1460}{\MPa}$ and the adhesive's density is $\SI{1.46}{\tonne/\m^3}$ \cite{manufCatalog}.
@@ -204,8 +186,6 @@ According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}
 	\label{fig:catalog_temp}
 \end{figure}
 
-\subsubsection{Constitutive behaviour}
-\label{sec:elastic}
 
 The constitutive behaviour was supposed to be isotropic linear elastic \cite{SernaMoreno2015} up to failure start. An uncoupled traction elastic behaviour \cite{Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014} on 3D cohesive finite elements was the best fit for modelling adhesives \cite{Abaqus613Manual}. \Cref{sec:coh_elem} deepens on the element formulation and properties. \Cref{eq:traction} shows how this model works.
 
@@ -252,8 +232,6 @@ On the other hand, the elastic modulus in the normal direction can also be calcu
 	\label{tab:ads_params}
 \end{table}
 
-\subsubsection{Damage model}
-\label{sec:damage}
 
 % Check other authors here
 \Cref{fig:Wu_failure_systems} shows the two possible failure mechanisms that may happen in an adhesive union, as described by \cite{Wu2013}:
@@ -301,7 +279,7 @@ where $\sigma_{n}^{0}$, $\tau_{II}^{0}$ and $\tau_{III}^{0}$ represent the pure 
 	\label{tab:ads_dmg_params}
 \end{table}
 
-As long as the condition exposed in \cref{eq:quads} is not satisfied, the adhesive layer behaves elastically. Once the condition gets satisfied, damage starts and a degradation in stiffness can be appreciated following the especified damage evolution model, being thus a case of LEFM, as the traction behaviour is also linear and no plastification takes place at any point.
+As long as the condition exposed in \cref{eq:quads} is not satisfied, the adhesive layer behaves elastically. Once the condition gets satisfied, damage starts and a degradation in stiffness can be appreciated following the especified damage evolution model, being thus a case of LEFM, as the traction behaviour is also linear and no yielding takes place at any point.
 
 These three failure modes are represented in \cref{fig:wikipedia_failure_modes} in a qualitative manner in order to give an idea of their geometrical features:
 \begin{itemize}
@@ -335,7 +313,7 @@ These three failure modes are represented in \cref{fig:wikipedia_failure_modes} 
 	\label{fig:wikipedia_failure_modes}
 \end{figure}
 
-XFEM-based LEFM require a pre-existing crack in the model or some nucleation formulation that governs its propagation \cite{Abaqus613Manual}. As the crack's initial localization and direction is not previously known, the VCCT criterion is used, which consists on correlating the displacement energy to the suffered damage. This technique can be applied in brittle crack formation, which is the case, as no plastification happens before damage or failure.
+XFEM-based LEFM require a pre-existing crack in the model or some nucleation formulation that governs its propagation \cite{Abaqus613Manual}. As the crack's initial localization and direction is not previously known, the VCCT criterion is used, which consists on correlating the displacement energy to the suffered damage. This technique can be applied in brittle crack formation, which is the case, as no yielding happens before damage or failure.
 
 For this particular case, the VCCT formulation was set as a fracture energy power law \cite{Loureiro2010, Sadowski2010, Sadowski2011, Sadowski2014, SernaMoreno2015}, as the given by \cref{eq:fracture_energy}.
 
@@ -365,7 +343,7 @@ Figure \ref{fig:damage} represents the whole damage model, including damage init
 	\label{fig:damage}
 \end{figure}
 
-\subsection{Adherends}
+\subsubsection{Adherends}
 
 In order to make the model comparable to the experiments carried out by \cite{Peroni2009}, steel was chosen for the adherends. In the present study, it is defined as an isotropic elastic-plastic material, with a density of $\SI{7.85}{\tonne/\m^3}$.
 
@@ -380,16 +358,16 @@ The elastic branch of the adherend stress-strain curve is defined as linear, wit
 
 It was supposed that the plastic branch of the steel would not develop enough to make necessary to take into account great kinematic harding effects, and was thus obviated.
 
-\subsection{Interaction}
+\subsubsection{Interaction}
 
 A general contact interaction was considered among all surfaces, including contact with themselves. Hard contact was considered on the normal direction, which implies that no penetration between surfaces may occur in case of contact. Models with both rough and frictionless contact were considered on the tangential directions, meaning that no slip may take place or that slip may happen without any resistance, respectively.
 
 Frictionless models resembled those ones with penalty tangential behaviour with minor variations, specially on the last phases of the impact. This may be due to the absence of strong normal forces between adherends and with little tangential load. An exception is found in the tube end in contact with the impact plate, where tangential loading is more important, as the differences in the results point out.
 
-\section{Computational and numerical considerations}
+\subsection{Computational and numerical considerations}
 % Include computational time
 
-\subsection{Hardware and software}
+\subsubsection{Hardware and software}
 
 The finite element package Abaqus is used in this research, on is version 6.13 \cite{Abaqus613Manual} running on a high performance computing cluster running CentOS Linux distribution.
 
@@ -398,7 +376,7 @@ Abaqus calculation kernel ---Abaqus/Explicit in this case--- works parallelized 
 Jobs running on loop parallelization over $16$ cores took about $\SI{8}{\hour}$ to finnish, which could be reduced to about $\SI{1}{\hour}$$\SI{15}{\minute}$ if mass scaling was applied. Domain paralelization turned out to be inefficient in this case due to network performance.
 
 
-\subsection{Model parametrization}
+\subsubsection{Model parametrization}
 \label{sec:script}
 
 Excepting some details added in the last phases of the development of the present study, the whole model has been parametrized, making use of the Python interpreter integrated in Abaqus. This will allow model optimization in future phases of development. The parametrization code includes:
@@ -419,7 +397,7 @@ Excepting some details added in the last phases of the development of the presen
 	\item Different contact formulations.
 \end{itemize}
 
-A flowchart explaining the model creation process of the code is depicted in \cref{fig:flow}. The whole code can be seen in \cref{apx:script}. Complementary scripts were also developed for its work within the cluster and for its optimization using the Dakota optimization software package \cite{dakota}.
+A flowchart explaining the model creation process of the code is depicted in \cref{fig:flow}. Complementary scripts were also developed for its work within the cluster and for its optimization using the Dakota optimization software package \cite{dakota}.
 
 \begin{figure}
 	\centering
@@ -429,7 +407,7 @@ A flowchart explaining the model creation process of the code is depicted in \cr
 \end{figure}
 
 
-\subsection{On the XFEM and the explicit solver}
+\subsubsection{On the XFEM and the explicit solver}
 \label{sec:xfem}
 
 The XFEM, developed by \cite{Moes1999}, is a numerical technique based on the FEM which enriches the solution in order to be able to work with discontinuities in the defining equations produced by material interfaces (named ``weak discontinuities'') or by a crack (named ``strong discontinuities'').
@@ -446,7 +424,7 @@ Explicit methods are used in time-dependent problems and their implementation is
 S\left(t_{i+1}\right) = F_{i}\left(S\left(t_{i}\right)\right) ;
 \label{eq:explicit}
 \end{equation}
-meaning that a state, $S$, at a certain time step, $t_{i+1}$, is calculated using the state at the previous time step, $t_{i}$. This method updates the stiffness matrix (included with other terms into $F$) after calculating each time step in order to take into account the effects of plastification, damage, etc.
+meaning that a state, $S$, at a certain time step, $t_{i+1}$, is calculated using the state at the previous time step, $t_{i}$. This method updates the stiffness matrix (included with other terms into $F$) after calculating each time step in order to take into account the effects of yielding, damage, etc.
 
 In order to maintain a reasonable accuracy level, explicit methods require small time steps, although equilibrium of the structure with external forces is not granted within none of those steps.
 
@@ -454,7 +432,7 @@ Their counterpart are implicit methods, which solve the problem basing the state
 
 They both have their limitations regarding to computational time ---being the implicit more computationally expensive--- and their aptitude to solve certain problems like cycling loads. The explicit method is used in the present study due to its aptitude for dynamic analysis.
 
-\subsection{Finite element mesh}
+\subsubsection{Finite element mesh}
 
 The use of cohesive elements allowed to make the adhesive's mesh much coarser due to their aspect ratios requirements. These elements were created with a size of $\SI{2.0}{\mm}$, and had only one element in the $\SI{0.3}{\mm}$ layer thickness. Other tried element types, specifically solids, had problems if side lengths were bigger than about $\SI{0.5}{\mm}$, and were completely unfeasible with lengths larger than $\SI{1.0}{\mm}$ approximatedly.
 
@@ -499,31 +477,17 @@ Finally, \cref{fig:mesh} shows the used mesh for the crash tube, which has more 
 \begin{table}
 	\centering
 	\begin{tabular}{ll p{3cm} rr}
-
-		
-
 		Part & Element type & Mesh type & Elements & Nodes \\
-
-		
-
 		Adherend & S4R (S3) & Structured (with free partitions) & $3844$ ($33$) & $4010$ \\
 		Adhesive & COH3D & Structured & $1200$ & $2718$ \\
 		Rigid plates & R3D4 & Free & $10$ & $15$ \\
 		Stabilizing box & R3D4 & Structured & $448$ & $480$ \\
-
-		
-
 		Total &&& $10622$ & $13966$ \\
-
-		
-
 	\end{tabular}
 	\caption[Mesh summary.]{Mesh summary. Given values correspond to each instance of that part. In the adherend case, there is a seven element recount difference between each instance, probably due to the free mesh control in some partitions. The average value is given.}
 	\label{tab:mesh}
 \end{table}
 
-\subsubsection{Mass scaling}
-\label{sec:mass_scaling}
 
 As \cite{Hale} explains, in explicit dynamic modelling, the total running time depends both on the model size (mesh size and total modelled time span) and in the time step size (${\Delta}t$). SDT is the maximum time step that still grants the numerical stability of the calculations, by supressing the possibility to a mechanical stress wave to go through more than one element in each time step. This condition is known as the Courant condition:
 
