@@ -141,54 +141,12 @@ The tie constraint included in Abaqus enabled non-coherent meshes between adhesi
 	\label{fig:mesh}
 \end{figure}
 
-\subsubsection{The COH3D}
-\label{sec:coh_elem}
-
-As COH3D were specifically formulated for adhesive modelling, among other uses, they have been widely used to model this material, in Abaqus \cite{Sadowski2010, Sadowski2011, Sadowski2014, Alvarez2014} and in other software packages \cite{Sato2000, Carlberger2007, Loureiro2010, Scattina2011, Ghasemnejad2013}, although this is not the only existing formulation \cite{Sato2000, Greve2007, Liao2011, Yang2012}. Certain stress distributions cannot be properly modelled, such as in-plane compression, but these have no interest or negligible effects. In Abaqus, these elements are denominated COH3D and require that:
-\begin{itemize}
-	\item There can only be a single layer of elements.
-
-	\item Element's shape must be plate-like: height smaller than the other dimensions, but not negligible.
-
-	\item A stack direction, usually based on the first point, and represented by $x'_{2}$ in \cref{fig:coh3d_csys}, in order to define the direction of the traction loading.
-\end{itemize}
-
-As the adhesive layer is very thin, it matches this geometrical requirements, making these elements suitable for this application (see \cref{fig:mesh_detail_coh3d_comparison}). These needed aspect ratios allow a coarser mesh on this part, if compared to general purpouse 3D elements, with access to better-fit formulations, and thus good results.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/coh3d_csys}
-	\caption[Representation of linear and cuadratic cohesive 2D elements.]{Representation of linear (a) and cuadratic (b) cohesive 2D elements. Axis denoted as $x_{i}$ are refered to the global coordinate system, being the $x'_{i}$ in the local coordinate system. In this case, $x'_{1}$ is the in-plane axis, and $x'_{2}$ is the normal axis, paralell to stack direction. Taken from \cite{Alvarez2014}.}
-	\label{fig:coh3d_csys}
-\end{figure}
-
-COH3D with the same element length as the adherend elements could be used without computational problems. But a such coarse mesh showed some difficulties on modelling damage behaviour, depicting a too staggered failure, instead of being more continuous-like.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/ads_detail}
-\caption{Frontal detail of the adhesive layer elements.}
-\label{fig:ads_detail}
-\end{figure}
-
-Although the quadratic nominal stress criterion formulation exists as a bulk damage model and as a contact damage model, only the former one was used. Using both would have been more realistic \cite{Wu2013}, but it brought simulation problems: elements separating alternatively from each adherend appeared together with elements inbetween in good state. Instead of getting stiffness degradation in the whole adhesive, undamaged elements were here subjected to the load their neighbours weren't handling, and thus failing significantly reducing adhesive's overall resistance, apart from other numerical issues.
-
-The contact interaction was eventually substituted by a tie constraint between the COH3D surface and the adherend elements (see \cref{fig:ads_detail} for in-model detail, and \cref{fig:union} for a schematic view of the concept). It is suppossed that the use of quadratic nominal stress criterion for contact interaction properties is more suitable for those cases in which the bulk of the adhesive layer is not of interest and the focus is on a general behaviour of the structure.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/union}
-	\caption[Cross section detail of the adhesive layer modelled with COH3D between two adherends modelled with shell elements.]{Cross section detail of the adhesive layer modelled with COH3D between two adherends modelled with shell elements. Taken from \cite{Scattina2011}.}
-	\label{fig:union}
-\end{figure}
-
-As the used damage model is a particular case of VCCT, it can only be applied in certain element types, like the COH3D. It supposes a formulation that strongly penalizes the minimum SDT \cite{Abaqus613Manual}, reducing it even to the order of $\SI{1.5e-9}{\s}$, much more unfavorable if compared to other damage models tried during the development of this study, which made it about $\SI{2e-7}{\s}$.
-
-It is recommended to see the work done by \cite{Alfano2001} for a deeper explanation on the COH3D element formulation, and the article written by \cite{May2014} for deeper information on failure formulations.
-
 The finite element package Abaqus Explicit is used in this research, on is version 6.13 \cite{Abaqus613Manual} running on a high performance computing cluster. Jobs running on loop parallelization over $16$ cores took about $\SI{8}{\hour}$ to finish. Domain parallelization turned out to be inefficient in this case due to poor network performance.
 
-\todo{Poner bien las referencias (cite pero que funcione)}
+\subsection{Simulation results}
+
+
+\todo{Poner bien las referencias (citet pero que funcione)}
 \section{Optimization strategy}
 
 
@@ -242,7 +200,7 @@ Therefore, the results shall be analyzed and, depending on the needs required fo
 The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
 
 \subsection{Metrics}
-\todo{Este apartado está plagiado}
+\todo{Plagiado}
 The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
 
 Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \cite{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
