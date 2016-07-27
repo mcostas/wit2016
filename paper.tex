@@ -418,6 +418,8 @@ It is recommended to see the work done by \cite{Alfano2001} for a deeper explana
 \section{Optimization strategy}
 
 
+
+
 \subsection{Surrogate-based methods}
 
 In order to optimize the specimen, a surrogate-optimization approach is used. Therefore, the computationally-expensive  objective functions of the model are replaced by another functions less costly to evaluate. 
@@ -428,7 +430,7 @@ Once the sampling is obtained, the surrogate model is created. The Multivariate 
 \begin{equation}\label{eq:mars}
 \hat{f}\left ( \bm{x} \right )= \sum_{m=1}^{M}a_{m}B_{m}\left ( \bm{x} \right ),
 \end{equation}
-where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in \cite{Friedman1995197}. 
+where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in \citep{Friedman1995197}. 
 
 In order to judge the accuracy of the trend functions, the goodness of fit $R^2$, needs to be looked into. This indicator is defined as
 \begin{equation}\label{eq:correlation_coefficient}
@@ -452,17 +454,24 @@ and the Pareto front, which is the set of optimal objective functions from the P
 PF^* := \left\{ \overline{\bm{u}} = \left( \hat{f}_1 \left( \bm{x} \right), \ldots , \hat{f}_k \left( \bm{x} \right) \right)  x \in P^* \right\}
 \end{equation}
 
-In the end, the set of points from the Pareto front has a number of components equal to the number of objective functions, each constituting a feasible solution to the problem. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function.
+In the end, the set of points from the Pareto front has a number of components equal to the number of objective functions, each constituting a feasible solution to the problem. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
+
+\begin{figure}[htpb]
+  \centering
+   \includegraphics[width=.8\columnwidth]{figures/IMG/Pareto}
+  \caption{Pareto frontier opposing energy absorbed and mass of the specimen.}
+  \label{fig:Pareto}
+\end{figure}
 
 Therefore, the results shall be analyzed and, depending on the needs required for the specimen, one or other point on the frontier is chosen. As with the single-objective optimization, multi-objective optimization usually has problems with local minima. For this problem, genetic algorithms are used, aiming for better and more reliable results.
 
-The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
+The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \citet{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
 
 \subsection{Metrics}
 
 The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
 
-Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \cite{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
+Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \citep{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
 \begin{equation}\label{Ea}
   E_{a}=\int _{0}^{\delta }F\! \left( z \right) \,dz\,,
 \end{equation}
@@ -475,7 +484,7 @@ The peak load $P_{peak}$ is defined as
 
 These three objective functions have not been randomly chosen. The first reason is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would harm the other two objective functions $m$ and $P_{peak}$, increasing both of them. An increase in the mass of the specimen translates into a higher mass of the vehicle, increasing its fuel consumption and reducing its performance; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
-The second reason for choosing these objective functions is purely computational. Traditionally, other researchers have swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. The SEA function is defined as a ratio between $E_a$ and $m$:
+The second reason for choosing these objective functions is purely computational. Traditionally, other researchers have swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \citep{Hou2007555}. The SEA function is defined as a ratio between $E_a$ and $m$:
 \begin{equation}\label{SEA}
   S\! EA=\dfrac {E_a} {m}
 \end{equation}
@@ -501,6 +510,22 @@ In order to optimize the model, the process has been divided into different stag
 Secondly, single-objective optimization is run for the SEA objective function. Whereas an optimization of the mass and the absorbed energy would provide better results, this can be easier optimized, since the other option requires multi-objective optimization. Both unconstrained and constrained optimization procedures are considered, setting a limit for the peak load constraint in the latter.
 
 Lastly, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
+
+Starting from a baseline model, the optima greatly improve the performance of the model. \Cref{fig:opt_comparison} shows the section of both a baseline model and the single-objective optimum for a maximized SEA. 
+
+\begin{figure}[htpb]
+\begin{subfigure}[b]{.45\columnwidth}
+   \includegraphics[width=\columnwidth]{figures/IMG/sc1.pdf}
+    \caption{Baseline model.}
+    \label{fig:back0}
+\end{subfigure}
+\qquad
+\begin{subfigure}[b]{.45\columnwidth}
+   \includegraphics[width=\columnwidth]{figures/IMG/top_view_foam.eps}
+    \caption{Specimen with the optimum SEA value.}
+    \label{fig:back5}
+\end{subfigure}
+\end{figure}
 
 
 \section{Conclusions}
