@@ -80,295 +80,66 @@ According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}
 
 \cite{Scattina2011} obtained adhesive stiffnesses through the inverse method, which are summarized in \cref{tab:ads_params}. These same parameters were used in the present study, as their results could be validated with the model.
 
-On the other hand, the elastic modulus in the normal direction can also be calculated using bulk modulus, $K$, provided by \cite{manufCatalog} and a Poisson's modulus, $\nu$, of $\num{0.295}$ \cite{JDiaz}, through the common formula that relates these parameters with the elastic modulus, $E$ in linear elastic mechanics. A similar proceeding would apply for both in-plane shear directions related to the shear modulus, $G$. The values obtained this way would be: $\SI{5.986e9}{\kN/\m^2}$ for $E_{N}$ and $\SI{3.467e8}{\kN/\m^2}$ for $E_{T}$. In spite of that, the values given by \cite{Scattina2011} are finally used.
-
 \begin{table}
 	\centering
 	\begin{tabular}{llrl}
+	\hline
 		Parameter & Description & Value & \\
-		
+		\hline
 		$E_{N}$ & Stiffness in normal direction & $\num{5e9}$ & $\si{\kN/\m^2}$ \\
 		$E_{T}$ & Stiffness in an in-plane direction & $\num{8e7}$ & $\si{\kN/\m^2}$ \\
+		$G_{Ic}$ & Energy release rate for mode I & $\num{2028}$ & $\si{\J/\m^2}$ \\
+		$G_{IIc}$ & Energy release rate for mode II & $\num{11853}$ & $\si{\J/\m^2}$ \\
+		$\sigma_{n}^{0}$ & Peak traction in normal direction & $\num{130}$ & $\si{\MPa}$ \\
+		$\tau_{II}^{0}$ & Peak traction in tangential direction & $\num{42.5}$ & $\si{\MPa}$ \\
+		\hline
 	\end{tabular}
 	\caption[Loctite Hysol 9514 parameters.]{Loctite Hysol 9514 parameters. Taken from \cite{Scattina2011}.}
 	\label{tab:ads_params}
 \end{table}
 
-
-% Check other authors here
-\Cref{fig:Wu_failure_systems} shows the two possible failure mechanisms that may happen in an adhesive union, as described by \cite{Wu2013}:
-\begin{itemize}
-	\item Adhesive failure, refered to the contact between different materials, implies the separation of the adhesive from the adherend.
-
-	\item Cohesive failure \cite{Vaidya2006}, refered to the bulk material, means that one piece of adhesive gets teared apart from another, breaking the continuum.
-\end{itemize}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/Wu_failure_systems}
-	\caption[Detail of both possible failure mechanisms of an adhesive union: cohesive failure and adhesive failure.]{Detail of both possible failure mechanisms of an adhesive union: cohesive failure (CF) and adhesive failure (AF). Taken from \cite{Wu2013}.}
-	\label{fig:Wu_failure_systems}
-\end{figure}
-
-Contact failure modelling ---corresponding to adhesive failure--- resulted in some simulation problems, which are furtherly explained in \cref{sec:coh_elem}. This situation was overcome by including only failure definitions in the bulk material, obviating the contact/adhesive failure as suggested by several authors \cite{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014, SernaMoreno2015}, although the modelled cohesive damage parameters include the effect of both adhesive and cohesive resistance.
-
-The quadratic nominal stress criterion is a widely used damage initiation criterion, defined as
+Contact failure modeling ---corresponding to adhesive failure--- resulted in some simulation problems, so adhesives and adherends were kept together with a simplified tie constraint. Thus, failure definitions were only included in the bulk material, obviating the contact/adhesive failure as suggested by several authors \cite{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014, SernaMoreno2015}, although the modeled cohesive damage parameters include the effect of both adhesive and cohesive resistance. The quadratic nominal stress criterion is a damage initiation criterion, defined as
 \begin{equation}
 \left(\frac{\left<\sigma_{n}\right>}{\sigma_{n}^{0}}\right)^{2} + \left(\frac{\tau_{II}}{\tau_{II}^{0}}\right)^{2} + \left(\frac{\tau_{III}}{\tau_{III}^{0}}\right)^{2} = 1 ;
 \label{eq:quads}
 \end{equation}
-where $\sigma_{n}^{0}$, $\tau_{II}^{0}$ and $\tau_{III}^{0}$ represent the pure mode loading threshold stresses for each direction. The out-of-plane value, $\sigma_{n}^{0}$, was set to $\SI{42.5}{\MPa}$ \cite{Scattina2011}, which corresponds to the peeling failure stress for steel. Note that Macaulay brackets indicate that compression is not considered in failure initiation. Both in-plane values, $\tau_{II}^{0}$ and $\tau_{III}^{0}$, were set to $\SI{130}{\MPa}$ \cite{Scattina2011}. These values are also included in \cref{tab:ads_dmg_params}. % ref to catalog?
+where $\sigma_{n}^{0}$, $\tau_{II}^{0}$ and $\tau_{III}^{0}$ represent the pure mode loading threshold stresses for each direction. The out-of-plane value, $\sigma_{n}^{0}$, was set to $\SI{42.5}{\MPa}$ \cite{Scattina2011}, which corresponds to the peeling failure stress for steel. Note that Macaulay brackets indicate that compression is not considered in failure initiation. Both in-plane values, $\tau_{II}^{0}$ and $\tau_{III}^{0}$, were set to $\SI{130}{\MPa}$ \cite{Scattina2011}. These values are also included in \cref{tab:ads_params}. % ref to catalog?
 
-\begin{table}
-	\centering
-	\begin{tabular}{llrl}
-
-		
-
-		Parameter & Description & Value & \\
-
-		
-
-		$G_{Ic}$ & Energy release rate for mode I & $\num{2028}$ & $\si{\J/\m^2}$ \\
-		$G_{IIc}$ & Energy release rate for mode II & $\num{11853}$ & $\si{\J/\m^2}$ \\
-		$\sigma_{n}^{0}$ & Peak traction in normal direction & $\num{130}$ & $\si{\MPa}$ \\
-		$\tau_{II}^{0}$ & Peak traction in tangential direction & $\num{42.5}$ & $\si{\MPa}$ \\
-
-		
-
-	\end{tabular}
-	\caption[Summary of Loctite Hysol 9514 damage parameters.]{Summary of Loctite Hysol 9514 damage parameters. Taken from \cite{Scattina2011}.}
-	\label{tab:ads_dmg_params}
-\end{table}
-
-As long as the condition exposed in \cref{eq:quads} is not satisfied, the adhesive layer behaves elastically. Once the condition gets satisfied, damage starts and a degradation in stiffness can be appreciated following the especified damage evolution model, being thus a case of LEFM, as the traction behaviour is also linear and no yielding takes place at any point.
-
-These three failure modes are represented in \cref{fig:wikipedia_failure_modes} in a qualitative manner in order to give an idea of their geometrical features:
-\begin{itemize}
-	\item Mode I, or opening mode: produced by a tensile stress normal to the plane of the crack.
-
-	\item Mode II, or sliding mode: originated by a shear stress acting in the crack plane, but perpendicularly to the crack front.
-
-	\item Mode III, or tearing mode: caused by a shear stress on the crack plane and parallel to the crack front.
-\end{itemize}
-
-\begin{figure}
-\centering
-\begin{minipage}[b]{.3\columnwidth}
-	\centering
-	\includegraphics[width=\columnwidth]{figures/IMG_CUTRES/wikipedia_failure_modes_1}
-			Mode I:	Opening
-\end{minipage}
-\hfill
-\begin{minipage}[b]{.3\columnwidth}
-	\centering
-	\includegraphics[width=\columnwidth]{figures/IMG_CUTRES/wikipedia_failure_modes_2}
-			Mode II: Sliding shear
-\end{minipage}
-\hfill
-\begin{minipage}[b]{.3\columnwidth}
-	\centering
-	\includegraphics[width=\columnwidth]{figures/IMG_CUTRES/wikipedia_failure_modes_3}
-			Mode III: Tearing shear
-\end{minipage}
-	\caption[Schematic view of the three failure modes.]{Schematic view of the three failure modes. Taken from \cite{wiki_fracture_modes}.}
-	\label{fig:wikipedia_failure_modes}
-\end{figure}
-
-XFEM-based LEFM require a pre-existing crack in the model or some nucleation formulation that governs its propagation \cite{Abaqus613Manual}. As the crack's initial localization and direction is not previously known, the VCCT criterion is used, which consists on correlating the displacement energy to the suffered damage. This technique can be applied in brittle crack formation, which is the case, as no yielding happens before damage or failure.
-
-For this particular case, the VCCT formulation was set as a fracture energy power law \cite{Loureiro2010, Sadowski2010, Sadowski2011, Sadowski2014, SernaMoreno2015}, as the given by \cref{eq:fracture_energy}.
+As long as the condition exposed in \cref{eq:quads} is not satisfied, the adhesive layer behaves elastically. Once the condition gets satisfied, damage starts and a degradation in stiffness can be appreciated following the specified damage evolution model. For this particular case, the material degradation was set as a fracture energy power law, as given by \cref{eq:fracture_energy}.
 
 \begin{equation}
 \left(\frac{G_{I}}{G_{Ic}}\right)^{\alpha}+\left(\frac{G_{II}}{G_{IIc}}\right)^{\alpha}+\left(\frac{G_{III}}{G_{IIIc}}\right)^{\alpha}=1 ;
 \label{eq:fracture_energy}
 \end{equation}
-where $G_{Ic}$ corresponds to the critical fracture energy required to cause failure in mode I (out-of-plane direction), and being $G_{IIc}$ and $G_{IIIc}$ the values for mode II and III, respectively, which correspond to both shear directions. The critical fracture energy for the Loctite Hysol 9514 in the normal direction is $\SI{2028}{\J/\m^2}$ \cite{Scattina2011}. It was considered that the adhesive had no preferential directions for tangential failure, meaning $G_{IIc}$ was equal to $G_{IIIC}$, and being the fracture energy equal to $\SI{11853}{\J/\m^2}$ \cite{Scattina2011}. These values are also depicted in \cref{tab:ads_dmg_params}. The exponent $\alpha$ was considered equal to $\num{2}$ \cite{Loureiro2010, Sadowski2010, Sadowski2011, Sadowski2014, SernaMoreno2015}.
+where $G_{Ic}$ corresponds to the critical fracture energy required to cause failure in mode I (out-of-plane direction), and being $G_{IIc}$ and $G_{IIIc}$ the values for mode II and III, respectively, which correspond to both shear directions. The critical fracture energy for the Loctite Hysol 9514 in the normal direction is $\SI{2028}{\J/\m^2}$ \cite{Scattina2011}. It was considered that the adhesive had no preferential directions for tangential failure, meaning $G_{IIc}$ was equal to $G_{IIIC}$, and being the fracture energy equal to $\SI{11853}{\J/\m^2}$ \cite{Scattina2011}. These values are also provided in \cref{tab:ads_params}. The exponent $\alpha$ was considered equal to $\num{2}$ \cite{Loureiro2010, Sadowski2010, SernaMoreno2015}.
 
-In addition, relating this equation to \cref{eq:quads} a stress increase in one mode ---initially suppossed on the limit just before damage progression--- provokes stiffness loss in every mode involved in \cref{eq:fracture_energy}.
+Regarding the metal sheets, in order to make the model comparable to the experiments carried out by \cite{Peroni2009}, steel was chosen for these adherends. In the present study, it is defined as an isotropic elastic-plastic material, with a density of $\SI{7.85}{\tonne/\m^3}$.
 
-Once damage has started, according to this model, fracture energy is released as damage progresses reducing material stiffness. If unloaded, the material would behave elastically again with degraded properties until damage criterion is accomplished again. \Cref{fig:damage_evo2D} illustrates this behaviour for a simplified 2D case.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/damage_evolution_manual.pdf}
-	\caption[Damage evolution representation for a 2D case.]{Damage evolution representation for a 2D case. Taken from \cite{Abaqus613Manual}.}
-	\label{fig:damage_evo2D}
-\end{figure}
-
-Figure \ref{fig:damage} represents the whole damage model, including damage initiation and the fracture energy, which corresponds to the area beneath the curve.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/scattina_quads}
-	\caption[Damage model representation.]{Damage model representation. Traction represents the load; $\delta$, the displacement ($\varepsilon$ in this study); $S$ and $T$, the maximum load in two different modes ($\sigma_{n}^{0}$, $\tau_{II}^{0}$ or $\tau_{III}^{0}$), corresponding to damage initiation, which takes place at $\delta^0$; and $\delta_m$, the displacement in the mixed-mode loading. Taken from \cite{Scattina2011}.}
-	\label{fig:damage}
-\end{figure}
+The elastic part of the adherend stress-strain curve is defined as linear, with an elastic modulus of $\SI{200}{\GPa}$ and a Poisson ratio of $\num{0.3}$. An initial yield stress of $\SI{190}{\MPa}$ is set, and work hardening is defined through a tangent plastic modulus of $\SI{950}{\MPa}$ \cite{Peroni2009}.
 
 
-In order to make the model comparable to the experiments carried out by \cite{Peroni2009}, steel was chosen for the adherends. In the present study, it is defined as an isotropic elastic-plastic material, with a density of $\SI{7.85}{\tonne/\m^3}$.
 
-The elastic branch of the adherend stress-strain curve is defined as linear, with an elastic modulus of $\SI{200}{\GPa}$ and a Poisson ratio of $\num{0.3}$. It is followed by a perfectly plastic branch starting at $\SI{190}{\MPa}$ up to $\SI{1140}{\MPa}$, which is considered total failure of this material. This way, some strain is allowed during the plastic branch in order to avoid numerical issues, as it can be seen on \cref{fig:steel}.
+\subsection{Finite element mesh and simulation setup}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/steel}
-	\caption{Steel stress-strain curve up to $\num{0.0006}$ strain rate.}
-	\label{fig:steel}
-\end{figure}
-
-It was supposed that the plastic branch of the steel would not develop enough to make necessary to take into account great kinematic harding effects, and was thus obviated.
-
-\subsubsection{Interaction}
-
-A general contact interaction was considered among all surfaces, including contact with themselves. Hard contact was considered on the normal direction, which implies that no penetration between surfaces may occur in case of contact. Models with both rough and frictionless contact were considered on the tangential directions, meaning that no slip may take place or that slip may happen without any resistance, respectively.
-
-Frictionless models resembled those ones with penalty tangential behaviour with minor variations, specially on the last phases of the impact. This may be due to the absence of strong normal forces between adherends and with little tangential load. An exception is found in the tube end in contact with the impact plate, where tangential loading is more important, as the differences in the results point out.
-
-\subsection{Computational and numerical considerations}
-% Include computational time
-
-\subsubsection{Hardware and software}
-
-The finite element package Abaqus is used in this research, on is version 6.13 \cite{Abaqus613Manual} running on a high performance computing cluster running CentOS Linux distribution.
-
-Abaqus calculation kernel ---Abaqus/Explicit in this case--- works parallelized on several processors in the cluster. Loop parallelization uses a shared memory paradigm and domain parallelization is based on a distributed memory model with message passing. TcT may vary between similar jobs depending on the processor capabilities. Due to this, only approximations to TcT are given, instead of precise values.
-
-Jobs running on loop parallelization over $16$ cores took about $\SI{8}{\hour}$ to finnish, which could be reduced to about $\SI{1}{\hour}$$\SI{15}{\minute}$ if mass scaling was applied. Domain paralelization turned out to be inefficient in this case due to network performance.
-
-
-\subsubsection{Model parametrization}
-\label{sec:script}
-
-Excepting some details added in the last phases of the development of the present study, the whole model has been parametrized, making use of the Python interpreter integrated in Abaqus. This will allow model optimization in future phases of development. The parametrization code includes:
-
-\begin{itemize}
-	\item Geometrical parameters, including: tube length, bonding flanges dimension, adhesive and adherend thicknesses, among others.
-
-	\item Impact conditions, such as speed or crush length.
-
-	\item Two cross sections: square and hexagonal.
-
-	\item Meshing parameters.
-
-	\item Possibility to have a material library, although it is not used due to the lack of validated models.
-
-	\item Optional tube fill with solid material and/or inner free plates.
-
-	\item Different contact formulations.
-\end{itemize}
-
-A flowchart explaining the model creation process of the code is depicted in \cref{fig:flow}. Complementary scripts were also developed for its work within the cluster and for its optimization using the Dakota optimization software package \cite{dakota}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=.95\linewidth]{flowchart/flow}
-	\caption[General structure of the parameterized code.]{General structure of the parametrization code. Straight arrows imply both chronological order and data dependency.}
-	\label{fig:flow}
-\end{figure}
-
-
-\subsubsection{On the XFEM and the explicit solver}
-\label{sec:xfem}
-
-The XFEM, developed by \cite{Moes1999}, is a numerical technique based on the FEM which enriches the solution in order to be able to work with discontinuities in the defining equations produced by material interfaces (named ``weak discontinuities'') or by a crack (named ``strong discontinuities'').
-
-With this approach, errors in this discontinuities are alleviated at the same time that computational cost is reduced by eliminating the need of remeshing on the discontinuities. As a requirement for this method, these discontinuities can only happen on mesh edges.
-
-Thanks to being based on the FEM, it retains many of its advantages, outstanding the possibility of free geometries for the mesh.
-
-Case of being a problem with time deffinition, a solver different from the standard has to be used. In the present study, Abaqus/Explicit was used as the solver. The tag ``Explicit'' points the method that is being used for the calculations.
-
-Explicit methods are used in time-dependent problems and their implementation is based on:
-
-\begin{equation}
-S\left(t_{i+1}\right) = F_{i}\left(S\left(t_{i}\right)\right) ;
-\label{eq:explicit}
-\end{equation}
-meaning that a state, $S$, at a certain time step, $t_{i+1}$, is calculated using the state at the previous time step, $t_{i}$. This method updates the stiffness matrix (included with other terms into $F$) after calculating each time step in order to take into account the effects of yielding, damage, etc.
-
-In order to maintain a reasonable accuracy level, explicit methods require small time steps, although equilibrium of the structure with external forces is not granted within none of those steps.
-
-Their counterpart are implicit methods, which solve the problem basing the state on a certain time step on that same state and on the previous one simultaneously through iterative methods, this is, including both states into $F$. Once convergence has been achieved, the following time step can be calculated.
-
-They both have their limitations regarding to computational time ---being the implicit more computationally expensive--- and their aptitude to solve certain problems like cycling loads. The explicit method is used in the present study due to its aptitude for dynamic analysis.
-
-\subsubsection{Finite element mesh}
-
-The use of cohesive elements allowed to make the adhesive's mesh much coarser due to their aspect ratios requirements. These elements were created with a size of $\SI{2.0}{\mm}$, and had only one element in the $\SI{0.3}{\mm}$ layer thickness. Other tried element types, specifically solids, had problems if side lengths were bigger than about $\SI{0.5}{\mm}$, and were completely unfeasible with lengths larger than $\SI{1.0}{\mm}$ approximatedly.
+The use of cohesive elements allowed to make the adhesive's mesh much coarser due to their aspect ratios requirements. These elements were created with a size of $\SI{2.0}{\mm}$, and had only one element in the $\SI{0.3}{\mm}$ layer thickness. Other tried element types, specifically solids, had problems if side lengths were bigger than about $\SI{0.5}{\mm}$, and were completely unfeasible with lengths larger than $\SI{1.0}{\mm}$ approximately.
 
 % Tie (include image)
-The tie constraint included in Abaqus allowed non-coherent meshes between adhesive and adherend (\cref{fig:mesh_detail_coh3d_comparison}). This way, finer meshes could be implemented on the adhesive in order to improve the representation of the failure progression without increasing the adherend element recount by leaving a coarser mesh there. If a structured mesh were used, a change on the adherend mesh on the union flanges would imply changing it in almost the whole adherend, in order to maintain the structured mesh.
+The tie constraint included in Abaqus enabled non-coherent meshes between adhesive and adherend (\cref{fig:mesh_detail_coh3d_comparison}). This way, finer meshes could be implemented on the adhesive in order to improve the representation of the failure progression without increasing the adherend element recount by leaving a coarser mesh there.
 
-\begin{figure}
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/mesh_detail_coh3d_comparison}
 	\caption[Detail of COH3D mesh on the adhesive layer.]{Detail of COH3D mesh on the adhesive layer (blue).}
 	\label{fig:mesh_detail_coh3d_comparison}
 \end{figure}
 
-% Mesh divisions for structure
-Parts were partitioned, so a structured mesh could be applied in the most of the model, and limiting free meshes to the trigger surroundings. This detail is represented in \cref{fig:mesh_part}. It was firstly considered one of reasons for critical situations, and was performed aiming to relieve a possible numerical origin of these problems. Although it was eventually proven to not be related, it was finally maintained.
-
-\begin{figure}
-	\centering
-	\begin{minipage}[b]{.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/IMG_CUTRES/assembly_detail_holes}
-	\end{minipage}
-	\quad
-	\begin{minipage}[b]{.48\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/IMG_CUTRES/mesh_detail_holes}
-	\end{minipage}
-\caption{Assembly partitions detail for mesh structuring.}
-\label{fig:mesh_part}
-\end{figure}
-
-Finally, \cref{fig:mesh} shows the used mesh for the crash tube, which has more than $\num{10600}$ elements, as \cref{tab:mesh} summarizes. In that same table, different element types are mentioned: ``S3'' and ``S4R'' are three and four noded general purpouse shell elements for structural analysis (the former one also includes reduced integration); ``R3D4'' are four noded 3D rigid quadrilateral; and ``COH3D'' are explained on \cref{sec:coh_elem}.
-
-\begin{figure}
+\Cref{fig:mesh} shows the used mesh for the crash tube, which has more than $\num{10600}$ elements.
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.9\linewidth]{figures/IMG_CUTRES/mesh}
 	\caption{General mesh of the crash box.}
 	\label{fig:mesh}
 \end{figure}
-
-% Total recount of elements (by part?)
-\begin{table}
-	\centering
-	\begin{tabular}{ll p{3cm} rr}
-		Part & Element type & Mesh type & Elements & Nodes \\
-		Adherend & S4R (S3) & Structured (with free partitions) & $3844$ ($33$) & $4010$ \\
-		Adhesive & COH3D & Structured & $1200$ & $2718$ \\
-		Rigid plates & R3D4 & Free & $10$ & $15$ \\
-		Stabilizing box & R3D4 & Structured & $448$ & $480$ \\
-		Total &&& $10622$ & $13966$ \\
-	\end{tabular}
-	\caption[Mesh summary.]{Mesh summary. Given values correspond to each instance of that part. In the adherend case, there is a seven element recount difference between each instance, probably due to the free mesh control in some partitions. The average value is given.}
-	\label{tab:mesh}
-\end{table}
-
-
-As \cite{Hale} explains, in explicit dynamic modelling, the total running time depends both on the model size (mesh size and total modelled time span) and in the time step size (${\Delta}t$). SDT is the maximum time step that still grants the numerical stability of the calculations, by supressing the possibility to a mechanical stress wave to go through more than one element in each time step. This condition is known as the Courant condition:
-
-\begin{equation}
-{\Delta}t_{stable} \leq f \left[\frac{h}{c}\right]_{min} ;
-\label{eq:courant}
-\end{equation}
-where $f$ is a factor, usually $0.9$; $h$ is the element dimension; and $c$ is the wave speed in that same element; the minimum is calculated within the whole model. The wave speed can be calculated as
-
-\begin{equation}
-c = \sqrt{\frac{E}{\rho}} ;
-\label{eq:wave_speed}
-\end{equation}
-where $E$ is the Young modulus; and $\rho$, the density. Among the values expresed in \cref{eq:courant,eq:wave_speed}, only density can be modified without heavily affecting accuracy. Applying this in order to improve numerical performance of the model is known as mass scaling.
-
-Software packages calculation kernels usually include this feature applying it selectively to those elements which are determining the unfavorable SDT in each time step.
-
-Following \cite{Scattina2011}, mass scaling was applied to the adhesive's density in the whole model, that is, with a given selection of element which corresponds to all adhesive elements.
-
-Increasing it one order of magnitude results on a SDT up to 30 times bigger. Increasing it two orders of magnitude results in very similar improvements, a bit worse perhaps. A factor of 40 was finally used, resulting in a SDT almost two orders of magnitude bigger than the original ones.
 
 \subsubsection{The COH3D}
 \label{sec:coh_elem}
@@ -414,6 +185,9 @@ The contact interaction was eventually substituted by a tie constraint between t
 As the used damage model is a particular case of VCCT, it can only be applied in certain element types, like the COH3D. It supposes a formulation that strongly penalizes the minimum SDT \cite{Abaqus613Manual}, reducing it even to the order of $\SI{1.5e-9}{\s}$, much more unfavorable if compared to other damage models tried during the development of this study, which made it about $\SI{2e-7}{\s}$.
 
 It is recommended to see the work done by \cite{Alfano2001} for a deeper explanation on the COH3D element formulation, and the article written by \cite{May2014} for deeper information on failure formulations.
+
+The finite element package Abaqus Explicit is used in this research, on is version 6.13 \cite{Abaqus613Manual} running on a high performance computing cluster. Jobs running on loop parallelization over $16$ cores took about $\SI{8}{\hour}$ to finish. Domain parallelization turned out to be inefficient in this case due to poor network performance.
+
 \todo{Poner bien las referencias (cite pero que funcione)}
 \section{Optimization strategy}
 
@@ -430,7 +204,7 @@ Once the sampling is obtained, the surrogate model is created. The Multivariate 
 \begin{equation}\label{eq:mars}
 \hat{f}\left ( \bm{x} \right )= \sum_{m=1}^{M}a_{m}B_{m}\left ( \bm{x} \right ),
 \end{equation}
-where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in \citep{Friedman1995197}. 
+where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in \cite{Friedman1995197}. 
 
 In order to judge the accuracy of the trend functions, the goodness of fit $R^2$, needs to be looked into. This indicator is defined as
 \begin{equation}\label{eq:correlation_coefficient}
@@ -465,13 +239,13 @@ In the end, the set of points from the Pareto front has a number of components e
 
 Therefore, the results shall be analyzed and, depending on the needs required for the specimen, one or other point on the frontier is chosen. As with the single-objective optimization, multi-objective optimization usually has problems with local minima. For this problem, genetic algorithms are used, aiming for better and more reliable results.
 
-The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \citet{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
+The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
 
 \subsection{Metrics}
-
+\todo{Este apartado está plagiado}
 The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
 
-Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \citep{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
+Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \cite{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
 \begin{equation}\label{Ea}
   E_{a}=\int _{0}^{\delta }F\! \left( z \right) \,dz\,,
 \end{equation}
@@ -484,7 +258,7 @@ The peak load $P_{peak}$ is defined as
 
 These three objective functions have not been randomly chosen. The first reason is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would harm the other two objective functions $m$ and $P_{peak}$, increasing both of them. An increase in the mass of the specimen translates into a higher mass of the vehicle, increasing its fuel consumption and reducing its performance; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
-The second reason for choosing these objective functions is purely computational. Traditionally, other researchers have swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \citep{Hou2007555}. The SEA function is defined as a ratio between $E_a$ and $m$:
+The second reason for choosing these objective functions is purely computational. Traditionally, other researchers have swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. The SEA function is defined as a ratio between $E_a$ and $m$:
 \begin{equation}\label{SEA}
   S\! EA=\dfrac {E_a} {m}
 \end{equation}
@@ -511,7 +285,7 @@ Secondly, single-objective optimization is run for the SEA objective function. W
 
 Lastly, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
 
-Starting from a baseline model, the optima greatly improve the performance of the model. \Cref{fig:opt_comparison} shows the section of both a baseline model and the single-objective optimum for a maximized SEA. 
+Starting from a baseline model, the optima greatly improve the performance of the model. \Cref{fig:opt_comparison} shows the section of both a baseline model and the single-objective optimum for a maximized SEA. \todo{Te falta el caption. El label ya se lo puse yo.}
 
 \begin{figure}[htpb]
 \begin{subfigure}[b]{.45\columnwidth}
@@ -521,10 +295,12 @@ Starting from a baseline model, the optima greatly improve the performance of th
 \end{subfigure}
 \qquad
 \begin{subfigure}[b]{.45\columnwidth}
-   \includegraphics[width=\columnwidth]{figures/IMG/top_view_foam.eps}
+   \includegraphics[width=\columnwidth]{figures/IMG/topview.png}
     \caption{Specimen with the optimum SEA value.}
     \label{fig:back5}
 \end{subfigure}
+\caption{blablabla}
+\label{fig:opt_comparison}
 \end{figure}
 
 
