@@ -76,9 +76,6 @@ Peeling problems were found near the impact head end during the development of t
 
 The model is made up of two different materials, together with several already mentioned ideally rigid parts (see \cref{sec:impact}). The adherends of the tube are made of elastic-plastic steel. The adhesive is an elastic material only considering one normal and two shear directions with a damage formulation.
 
-It must be pointed out that the use of several material with different behaviour formulations including crack formation implies the use of the XFEM. Although it will have some implications in the present section ---and more specifically on \cref{sec:damage}---, the XFEM will be explained afterwards in \cref{sec:xfem} in order to keep some coherence in the explanation.
-
-\subsubsection{Adhesive}
 Loctite Hysol 9514 \cite{manufCatalog} was the chosen adhesive for the bonding, for its shown interest by many other authors for structural bonding \cite{Sadowski2010, Scattina2011, SernaMoreno2015}, making it an \textit{a priori} good candidate for the studied application. It is a monocomponent epoxy adhesive which requires heat curing processes in the union cast.
 
 According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}{\MPa}$, although this parameter is subject to variation depending both in cure temperature and time. Dependency can be seen on \cref{fig:catalog_temp}. Given value corresponds to a $\SI{150}{\celsius}$ cure for $\SI{30}{\min}$. The bulk modulus is $\SI{1460}{\MPa}$ and the adhesive's density is $\SI{1.46}{\tonne/\m^3}$ \cite{manufCatalog}.
@@ -247,7 +244,6 @@ Figure \ref{fig:damage} represents the whole damage model, including damage init
 	\label{fig:damage}
 \end{figure}
 
-\subsubsection{Adherends}
 
 In order to make the model comparable to the experiments carried out by \cite{Peroni2009}, steel was chosen for the adherends. In the present study, it is defined as an isotropic elastic-plastic material, with a density of $\SI{7.85}{\tonne/\m^3}$.
 
