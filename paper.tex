@@ -3,8 +3,8 @@
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{cleveref}
-\bibliographystyle{witpress}
 % \usepackage{natbib}
+\bibliographystyle{witpress}
 
 
 \begin{document}
@@ -37,63 +37,18 @@ On the other hand, structural adhesives have improved their mechanical propertie
 As shown in \Cref{fig:comparison}, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. In order to check adhesive's suitability for their use in crashworthy elements, this research develops numerical models of adhesively bonded crash boxes subjected to impact loads using finite element models. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
 
 \section{Finite element model}
-The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is practiced on the surface of two flanges on each adherend side. In order to ease the model validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modeled by \cite{Scattina2011}. In particular, the two sections depicted in \cref{fig:tubes} are modeled in the present study.
+The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is practiced on the surface of two flanges on each adherend side. In order to ease the model validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modeled by \cite{Scattina2011}. In particular, the two sections depicted in \cref{fig:crash_box} are modeled in the present study.
 
 \begin{figure}
 	\centering
-\begin{minipage}[b]{.45\linewidth}
-	\centering
-	\includegraphics[height=80mm]{figures/IMG_CUTRES/A_tube}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{.45\linewidth}
-	\centering
-	\includegraphics[height=80mm]{figures/IMG_CUTRES/B_tube}
-\end{minipage}
-	\caption[Modeled tubes and corresponding cross sections.]{Modeled tubes and corresponding cross sections. Top-hat section with adhesive in red (left), and double hat section with adhesive in blue (right).}
-	\label{fig:tubes}
-\end{figure}
-
-The tube is crushed between two rigid plates, one fixed and the other moving at impact speed. In order to ease the formation of a stable collapse mechanism, a triggering is machined near the front end of the tube. The trigger starts a desired collapse mode in that area.
-
-
-These sections allow comparison between cross sections as each case has the same box perimeter and the same bonding surface \cite{Peroni2009}. In addition, two of the union layouts tested by \cite{Peroni2009} were discarded due to serious bond casting difficulties. Measures of three of the tubes tested by these authors are depicted in \cref{fig:crash_box}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\linewidth]{figures/IMG_CUTRES/crash_box}
-	\caption[General measure of the crash box model with three different sections.]{General measure of the crash box model with three different sections. Taken from \cite{Peroni2009}.}
+	\includegraphics[width=0.6\linewidth]{figures/IMG_CUTRES/medidas_cb}
+	\caption{Dimensions of the modeled crash boxes, in millimeters. Taken from \cite{Peroni2009}.}
 	\label{fig:crash_box}
 \end{figure}
 
-\subsubsection{Triggering}
+\todo{centrar figuras}
 
-In order to facilitate the generation of an stable collapse mechanism, crash boxes usually have some triggering in certain areas. It is based on certain controlled weakening of a section of the tube so, when crushing starts, the collapse will tend to a known pattern instead of others. This is done because this stable collapse patterns give the greatest SEA with reduced Pk.
-
-In the present study, the trigger system consists on a series of holes placed at $\SI{20}{\mm}$ measured from the crushing end, with a diameter of $\SI{4}{\mm}$, as detailed on \cref{fig:crash_box}. They are meant to weaken the section in which they are applied in order to initiate collapse in that point. Collapse should start as a first wave in that cross section if triggering has been correctly applied.
-
-\begin{figure}
-	\centering
-	\begin{minipage}[b]{.23\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/IMG_CUTRES/abedrabbo_trigger}
-	\end{minipage}
-	\quad
-	\begin{minipage}[b]{.23\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/IMG_CUTRES/peroni_trig}
-	\end{minipage}
-	\quad
-	\begin{minipage}[b]{.45\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/IMG_CUTRES/scattina_trig}
-	\end{minipage}
-	\caption[Detail of different triggers: punching, holes and indentations.]{Detail of different triggers. From left to right: punching \cite{Abedrabbo2009}, holes \cite{Peroni2009} and indentations \cite{Scattina2011}.}
-	\label{fig:different_trig}
-\end{figure}
-
-% Comment other triggers
-This is not the only trigger design, as it can be seen on \cref{fig:different_trig}. Initial deformation of a near-head cross section is a common solution \cite{Abedrabbo2009, Scattina2011, Costas2013}, although it may present some problems, such as beginnings of peeling near the triggered section, either provoked by the trigger process itself or either due to easing this peeling in the first phases of the impact.
+The tube is crushed between two rigid plates, one fixed and the other moving at impact speed. In order to ease the formation of a stable collapse mechanism, a triggering is machined near the front end of the tube. The trigger starts a desired collapse mode in that area.
 
 \subsubsection{Impact conditions} % Speed, etc
 \label{sec:impact}

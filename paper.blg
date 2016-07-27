@@ -3,53 +3,51 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
 The style file: witpress.bst
 Database file #1: ./references/references.bib
-`journal' is a missing field, not a string, for entry Costas2013
-while executing---line 1327 of file witpress.bst
-Warning--empty journal in Costas2013
-Warning--empty year in Costas2013
+Warning--I didn't find a database entry for "wiki_fracture_modes"
+Warning--I didn't find a database entry for "Hale"
 `journal' is a missing field, not a string, for entry JDiaz
 while executing---line 1327 of file witpress.bst
 Warning--empty journal in JDiaz
 Warning--empty year in JDiaz
-You've used 29 entries,
+You've used 25 entries,
             2596 wiz_defined-function locations,
-            752 strings with 9678 characters,
-and the built_in function-call counts, 20055 in all, are:
-= -- 1786
-> -- 320
-< -- 21
-+ -- 126
-- -- 97
-* -- 1617
-:= -- 2193
-add.period$ -- 54
-call.type$ -- 29
-change.case$ -- 29
+            737 strings with 8947 characters,
+and the built_in function-call counts, 18425 in all, are:
+= -- 1659
+> -- 280
+< -- 20
++ -- 110
+- -- 85
+* -- 1504
+:= -- 2014
+add.period$ -- 47
+call.type$ -- 25
+change.case$ -- 25
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 2118
-empty$ -- 2020
-format.name$ -- 121
-if$ -- 4558
+cite$ -- 27
+duplicate$ -- 1945
+empty$ -- 1852
+format.name$ -- 107
+if$ -- 4193
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 280
-newline$ -- 90
-num.names$ -- 26
-pop$ -- 358
+int.to.str$ -- 25
+missing$ -- 250
+newline$ -- 78
+num.names$ -- 23
+pop$ -- 306
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 393
+skip$ -- 356
 stack$ -- 0
-substring$ -- 2409
-swap$ -- 925
-text.length$ -- 21
+substring$ -- 2271
+swap$ -- 845
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 4
-while$ -- 117
-width$ -- 31
-write$ -- 249
-(There were 2 error messages)
+warning$ -- 2
+while$ -- 108
+width$ -- 27
+write$ -- 220
+(There was 1 error message)

@@ -15,17 +15,6 @@ Scattina, A., Peroni, L., Peroni, M. \& Avalle, M., Numerical analysis of
   hybrid joining in car body applications. \emph{Journal of Adhesion Science
   and Technology}, \textbf{25(18)}, pp. 2409--2433, 2011.
 
-\bibitem{Abedrabbo2009}
-Abedrabbo, N., Mayer, R., Thompson, A., Salisbury, C., Worswick, M. \& van
-  Riemsdijk, I., Crash response of advanced high-strength steel tubes:
-  Experiment and model. \emph{International Journal of Impact Engineering},
-  \textbf{36(8)}, pp. 1044--1057, 2009.
-
-\bibitem{Costas2013}
-Costas, M., D\'{\i{}}az, J., Romera, L., Hern\'{a}ndez, S. \& Tielas, A.,
-  Static and dynamic axial crushing analysis of car frontal impact hybrid
-  absorbers.
-
 \bibitem{Goglio2008}
 Goglio, L. \& Rossetto, M., Impact rupture of structural adhesive joints under
   different stress combinations. \emph{International Journal of Impact
@@ -86,10 +75,6 @@ Loureiro, A., Da~Silva, L., Sato, C. \& Figueiredo, M., Comparison of the
   automotive industry. \emph{Journal of Adhesion}, \textbf{86(7)}, pp.
   765--787, 2010.
 
-\bibitem{wiki_fracture_modes}
-Fracture crack separation modes.
-  \url{https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Fracture_modes_v2.svg/2000px-Fracture_modes_v2.svg.png}.
-
 \bibitem{dakota}
 Adams, B., Bauman, L., Bohnhoff, W., Dalbey, K., Ebeida, M., Eddy, J., Eldred,
   M., Hough, P., Hu, K., Jakeman, J., Stephens, J., Swiler, L., Vigil, D. \&
@@ -101,12 +86,6 @@ Adams, B., Bauman, L., Bohnhoff, W., Dalbey, K., Ebeida, M., Eddy, J., Eldred,
 Mo\"{e}s, N., Dolbow, J. \& Belytschko, T., A finite element method for crack
   growth without remeshing. \emph{International Journal for Numerical Methods
   in Engineering}, \textbf{46(1)}, pp. 131--150, 1999.
-
-\bibitem{Hale}
-Hale, S., What is mass scaling and when is it appropriate in explicit dynamics
-  analysis?
-  \url{https://caeai.com/blog/what-mass-scaling-and-when-it-appropriate-explicit-dynamics-analysis},
-  2014.
 
 \bibitem{Alvarez2014}
 \'{A}lvarez, D., Blackman, B., Guild, F. \& Kinloch, A., Mode i fracture in
