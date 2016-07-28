@@ -144,20 +144,9 @@ The tie constraint included in Abaqus enabled non-coherent meshes between adhesi
 The finite element package Abaqus Explicit is used in this research, on is version 6.13 \cite{Abaqus613Manual} running on a high performance computing cluster. Jobs running on loop parallelization over $16$ cores took about $\SI{8}{\hour}$ to finish. Domain parallelization turned out to be inefficient in this case due to poor network performance.
 
 \subsection{Simulation results}
-subsection{F-D}
-\label{sec:F-D}
 
-Typical crash test F-D present a series of alternating peaks and valleys of similar values, except for the first peak, which is greater in value (about twice or three times the mean value) and much more pronounced, as it can be seen on \cref{fig:phdcostas_f-d}. Except in case of critical situations, a clear maximum peak takes place in this first peak.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/phdcostas_f-d}
-\caption[Another F-D.]{Another F-D. Taken from \cite{phdCostas}.}
-\label{fig:phdcostas_f-d}
-\end{figure}
-
-In order to filter high frequency effects, a SAE 600 filter was applied to the simulation results \cite{Huang}. This was also interesting as the level of noise in the output functions made it difficult to distinguish them when plotted together. \Cref{fig:F-D_frictionless,fig:F-D_rough} display modelled crash boxes with frictionless and rough interaction properties respectively. In that same figure and in the upcoming ones, nomenclature is as follows:
-
+In order to filter high frequency effects, a SAE 600 filter was applied to the simulation results \cite{Huang}. \Cref{fig:F-D_frictionless,fig:F-D_rough} provide the force-displacement curves considering no friction and rough interaction properties respectively. In that same figure and in the upcoming ones, nomenclature is as follows:
 \begin{itemize}
 	\item ``A'' or ``B'' indicating the cross-section of the tube: ``A'' for the top-hat, and ``B'' for the double hat.
 
@@ -168,7 +157,6 @@ In order to filter high frequency effects, a SAE 600 filter was applied to the s
 	\item ``Sb'' after the underline marks the presence of a stabilizing box in the model.
 \end{itemize}
 
-% Insert obtained F-D curve
 \begin{figure}
 	\centering
 	\begin{minipage}[b]{.9\linewidth}
@@ -206,9 +194,9 @@ In order to filter high frequency effects, a SAE 600 filter was applied to the s
 	\label{fig:peroni_qstat_fd}
 \end{figure}
 
-Qualitatively, this curves are very similar to those obtained by \cite{Peroni2009}. \Cref{fig:peroni_qstat_fd} depicts a quasi-static test performed by these authors with the same section and bonding solution. Facing these similitudes, the model is considered valid. Differences are commented on \cref{sec:interpretation}.
+Qualitatively, this curves are very similar to those obtained by \cite{Peroni2009}. \Cref{fig:peroni_qstat_fd} depicts a quasi-static test performed by these authors with the same section and bonding solution. Facing these similitudes, the model is considered valid.
 
-In general, a uniform F-D would be the most desirable scenery, as it would imply maximizing the Ea ---which would be equal to the average value multiplied by the total time--- with the minimum Pk. As this is not possible in practice, the best solution will be the one with the most constant-like behavior.
+In general, a uniform force-displacement curve would be the most desirable scenario, as it would imply maximizing the $E_\text{a}$  with the minimum $P_\text{peak}$. Thus, the best solution will be the one with the most constant-like behavior.
 
 \subsubsection{Mean and standard deviation}
 
