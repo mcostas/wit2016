@@ -196,7 +196,7 @@ In general, a uniform force-displacement curve would be the most desirable scena
 
 In order to optimize the specimen, a surrogate-optimization approach is used. Therefore, the computationally-expensive  objective functions of the model are replaced by another functions less costly to evaluate. 
 
-Firstly, with the parametrized model, a sampling of !!N!! samples is performed, relying on the LHS technique. This method creates a set of data with homogeneous projections on each variable axis, so that no superimposed projections appear. 
+Firstly, with the parametrized model, a sampling of $n$ samples is performed, relying on the LHS technique. This method creates a set of data with homogeneous projections on each variable axis, so that no superimposed projections appear. 
 
 Once the sampling is obtained, the surrogate model is created. The Multivariate adaptive regression splines (MARS) method is chosen, where the surrogate functions are adjusted with cubic splines following the next expression
 \begin{equation}\label{eq:mars}
