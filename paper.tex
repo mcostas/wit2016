@@ -31,14 +31,27 @@ This work describes an investigation on the structural optimization of the crash
 Occupant safety is a key issue on vehicle and aircraft design nowadays, and crashworthy elements are required to absorb the energy during a crash and minimize the effects on the occupants. Aircraft and vehicles are nowadays provided with crash boxes to absorb the impact energy through deformation in order to protect the passengers. They are usually tube-shaped and made of several parts that require some kind of bonding.
 
 On the other hand, structural adhesives have improved their mechanical properties in recent years and can be now used with confidence in heavy duty applications. Interest on them is also raising up in scientific fields thanks to these enhancements and to the recent development of validated numerical models.
+
+
 \begin{figure}[htpb]
-	\centering
-	\includegraphics[width=\linewidth]{./figures/IMG_CUTRES/comparison}
-	\caption[Qualitative strength and cost comparison of different joining solutions.]{Qualitative strength and cost comparison of different joining solutions. Taken from \cite{superyacht}.}
-	\label{fig:comparison}
+\begin{subfigure}[b]{.45\columnwidth}
+   \includegraphics[width=\columnwidth]{figures/IMG/ace}
+    \caption{ACE body structure design by Honda. Relevant structural members and load paths. Taken and modified from \cite{tesis_mcostas}.}
+    \label{fig:car}
+\end{subfigure}
+\qquad
+\begin{subfigure}[b]{.45\columnwidth}
+   \includegraphics[width=\columnwidth]{figures/IMG/energy_absorption2}
+    \caption{Schematics of an aircraft fuselage drop test for crashworthiness evaluation. Taken from \cite{Paz:2014dw}.}
+    \label{fig:plane}
+\end{subfigure}
+\label{fig:car_plane}
 \end{figure}
 
-As shown in \Cref{fig:comparison}, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. In order to check adhesive's suitability for their use in crashworthy elements, this research develops numerical models of adhesively bonded crash boxes subjected to impact loads using finite element models. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
+
+% As shown if \cref{fig:car_plane}, 
+
+\Cref{fig:car,fig:plane} show the schematics of a car frame and a fuselage section, both enclosing crash boxes. For these applications, adhesives are very competitive both in bonding strength and in economical manufacturing costs \cite{superyacht}. In order to check adhesive's suitability for their use in crashworthy elements, this research develops numerical models of adhesively bonded crash boxes subjected to impact loads using finite element models. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
 
 \section{Finite element model}
 The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is practiced on the surface of two flanges on each adherend side. In order to ease the model validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modeled by \cite{Scattina2011}. In particular, the two sections depicted in \cref{fig:crash_box} are modeled in the present study.
@@ -214,22 +227,12 @@ With the surrogate-based model created, multi-objective optimization is performe
   \label{fig:Pareto}
 \end{figure}
 
-% The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}, which perform optimization supporting general constraints as well as mixtures of real and discrete variables.
-
 \subsection{Metrics}
 
 The objective functions considered in this research are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The mass of the specimen is obtained from the finite element model, and $E_a$ and $P_{peak}$ are obtained from the resulting force-displacement curves.
 
 The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} before making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, $E_a$ and $P_{peak}$ are obtained.
-% \begin{equation}\label{Ea}
-%   E_{a}=\int _{0}^{\delta }F\! \left( z \right) \,dz\,,
-% \end{equation}
-% where $\delta$ is the total axial crushing distance and $F\! \left( z \right)$ the crushing force at a distance $z$.
 
-% The peak load $P_{peak}$ is defined as
-% \begin{equation}\label{Peak}
-%  P_{peak}=max\left\{ F\! \left( z \right)  \forall z \in [0,\delta] \right\}
-% \end{equation}
 
 The first reason for choosing these metrics is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would the mass of the specimen and $P_{peak}$. Increasing the mass also  increases the vehicle's fuel consumption and reduces its efficiency; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
@@ -238,8 +241,6 @@ Furthermore, other researchers have traditionally optimized the specific energy 
 \subsection{Optimization process}
 
 In order to optimize the model, the process is divided into two different stages. Firstly, a parameter study is performed. A simple sampling of the work space for each variable is carried out. With this, a general idea of the variables' behavior is obtained.
-
-% Secondly, single-objective optimization is run for the SEA objective function. Whereas an optimization of the mass and the absorbed energy would provide better results, this can be easier optimized, since the other option requires multi-objective optimization. Both unconstrained and constrained optimization procedures are considered, setting a limit for the peak load constraint in the latter.
 
 
 Afterwards, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
