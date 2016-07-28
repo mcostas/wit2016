@@ -830,29 +830,31 @@ Once the sampling is obtained, the surrogate model is created. The Multivariate 
 \end{equation}
 where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in \cite{Friedman1995197}. 
 
-In order to judge the accuracy of the trend functions, the goodness of fit $R^2$, needs to be looked into. This indicator is defined as
-\begin{equation}\label{eq:correlation_coefficient}
-  R^2 = {\left(\dfrac{\sigma_{\bm{f}
-\bm{\hat{f}}}}{\sqrt{\sigma_{\bm{f}}^2
-\sigma_{\bm{\hat{f}}}^2}}\right)}^2
-\end{equation}
+% In order to judge the accuracy of the trend functions, the goodness of fit $R^2$, needs to be looked into. This indicator is defined as
+% \begin{equation}\label{eq:correlation_coefficient}
+%   R^2 = {\left(\dfrac{\sigma_{\bm{f}
+% \bm{\hat{f}}}}{\sqrt{\sigma_{\bm{f}}^2
+% \sigma_{\bm{\hat{f}}}^2}}\right)}^2
+% \end{equation}
 
-This is done for all objective functions, where values equal or higher than $0.95$ for the selected objective functions are expected. 
+% This is done for all objective functions, where values equal or higher than $0.95$ for the selected objective functions are expected. 
 
 With the surrogate-based model created, two optimization strategies are used. In a first approach, single-objective optimization techniques are applied. The calculations that this type of optimization requires are relatively simple once the proper surrogate model has been built. Single-objective optimization searches for the minima of the function within the limits of the design space. Traditional methods involving gradient-based and Hessian-based information are not very useful for optimizing the type of problems studied in this research, since many local minima are found in the function, yielding only misleading results. Therefore, a single-objective evolutionary algorithm is used, since this type of methods are slower but dodge local minima with ease.
 
-The other type of optimization used is multi-objective optimization. This procedure involves more resources for the calculations. Instead of a single point, the results are conformed by a Pareto front, corresponding to a range of results. The set of all Pareto optimal design configurations, $P^*$, is defined as:
 
-\begin{equation}
-P^* := \left\{ x \in \Pi \   \nexists x' \in \Pi \    \hat{f}_i \left( \bm{x'} \right) \leqslant \hat{f}_i \left( \bm{x} \right)  \right\}
-\end{equation}
-and the Pareto front, which is the set of optimal objective functions from the Pareto design configurations, $PF^*$, is defined as:
 
-\begin{equation}
-PF^* := \left\{ \overline{\bm{u}} = \left( \hat{f}_1 \left( \bm{x} \right), \ldots , \hat{f}_k \left( \bm{x} \right) \right)  x \in P^* \right\}
-\end{equation}
+% The set of all Pareto optimal design configurations, $P^*$, is defined as:
 
-In the end, the set of points from the Pareto front has a number of components equal to the number of objective functions, each constituting a feasible solution to the problem. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
+% \begin{equation}
+% P^* := \left\{ x \in \Pi \   \nexists x' \in \Pi \    \hat{f}_i \left( \bm{x'} \right) \leqslant \hat{f}_i \left( \bm{x} \right)  \right\}
+% \end{equation}
+% and the Pareto front, which is the set of optimal objective functions from the Pareto design configurations, $PF^*$, is defined as:
+
+% \begin{equation}
+% PF^* := \left\{ \overline{\bm{u}} = \left( \hat{f}_1 \left( \bm{x} \right), \ldots , \hat{f}_k \left( \bm{x} \right) \right)  x \in P^* \right\}
+% \end{equation}
+
+The other type of optimization used is multi-objective optimization, where the results are conformed by a Pareto front, corresponding to a range of results. In the end, the set of points from the Pareto front has a number of components equal to the number of objective functions, each constituting a feasible solution to the problem. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
 
 \begin{figure}[htpb]
   \centering
@@ -861,45 +863,48 @@ In the end, the set of points from the Pareto front has a number of components e
   \label{fig:Pareto}
 \end{figure}
 
-Therefore, the results shall be analyzed and, depending on the needs required for the specimen, one or other point on the frontier is chosen. As with the single-objective optimization, multi-objective optimization usually has problems with local minima. For this problem, genetic algorithms are used, aiming for better and more reliable results.
+% Therefore, the results shall be analyzed and, depending on the needs required for the specimen, one or other point on the frontier is chosen. As with the single-objective optimization, multi-objective optimization usually has problems with local minima. For this problem, genetic algorithms are used, aiming for better and more reliable results.
 
-The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
+The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}, which perform optimization supporting general constraints as well as mixtures of real and discrete variables.
 
 \subsection{Metrics}
 
 The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
 
-Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \cite{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
+The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} befora making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, the $E_a$ is obtained as
 \begin{equation}\label{Ea}
   E_{a}=\int _{0}^{\delta }F\! \left( z \right) \,dz\,,
 \end{equation}
-with $\delta$ being the total axial crushing distance and $F\! \left( z \right)$ the value of the crushing force at the crushing length $z$.
+where $\delta$ is the total axial crushing distance and $F\! \left( z \right)$ the crushing force at a distance $z$.
 
 The peak load $P_{peak}$ is defined as
 \begin{equation}\label{Peak}
  P_{peak}=max\left\{ F\! \left( z \right)  \forall z \in [0,\delta] \right\}
 \end{equation}
 
-These three objective functions have not been randomly chosen. The first reason is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would harm the other two objective functions $m$ and $P_{peak}$, increasing both of them. An increase in the mass of the specimen translates into a higher mass of the vehicle, increasing its fuel consumption and reducing its performance; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
+The first reason for choosing these metrics is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would the mass of the specimen and $P_{peak}$. Increasing the mass also  increases the vehicle's fuel consumption and reduces its efficiency; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
-The second reason for choosing these objective functions is purely computational. Traditionally, other researchers have swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. The SEA function is defined as a ratio between $E_a$ and $m$:
-\begin{equation}\label{SEA}
-  S\! EA=\dfrac {E_a} {m}
-\end{equation}
+Furthermore, other researchers have traditionally swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. Thus, they were also evaluated as objective functions, but it was found that during the optimization process these quantities have a more complicated comportment and a noisier nature for this model. 
+% The SEA function is defined as a ratio between $E_a$ and $m$:
+% \begin{equation}\label{SEA}
+%   S\! EA=\dfrac {E_a} {m}
+% \end{equation}
 
-By contrast, the load ratio relates the $P_{peak}$ with the mean load $P_m$ as
-\begin{equation}\label{LR}
-  LR=\dfrac {P_{peak}} {P_m}
-\end{equation}
+% By contrast, the load ratio relates the $P_{peak}$ with the mean load $P_m$ as
+% \begin{equation}\label{LR}
+%   LR=\dfrac {P_{peak}} {P_m}
+% \end{equation}
 
-The mean load is obtained as a ratio between the absorbed energy and the total crushing length $\delta$:
-\begin{equation}\label{Pm}
-  P_{m}=\dfrac {E_a} {\delta}
-\end{equation}
+% The mean load is obtained as a ratio between the absorbed energy and the total crushing length $\delta$:
+% \begin{equation}\label{Pm}
+%   P_{m}=\dfrac {E_a} {\delta}
+% \end{equation}
 
-The SEA and LR were also evaluated as objective functions, but it was found that during the optimization process these quantities have a more complicated comportment and a noisier nature for this model. Consequently, they were only used during the parameter study and the single-objective optimization. They were discarded from the multi-objective  optimization process and are only used as indicators to compare different specimens.
 
-The peak load is also used as a constraint in the single-objective optimization. This is done so that, in the real specimen, the required force to crumple the piece is never over a certain value, thus protecting the rest of the car's chassis and the occupants. In the multi-objective optimization this is not required nor used, since the final results consist of Pareto fronts, where the maximum peak load depends on the mass or energy absorption desired.
+
+% Consequently, they were only used during the parameter study and the single-objective optimization. They were discarded from the multi-objective  optimization process and are only used as indicators to compare different specimens.
+
+% The peak load is also used as a constraint in the single-objective optimization. This is done so that, in the real specimen, the required force to crumple the piece is never over a certain value, thus protecting the rest of the car's chassis and the occupants. In the multi-objective optimization this is not required nor used, since the final results consist of Pareto fronts, where the maximum peak load depends on the mass or energy absorption desired.
 
 \subsection{Optimization process}
 
@@ -923,6 +928,7 @@ Starting from a baseline model, the optima greatly improve the performance of th
     \caption{Specimen with the optimum SEA value.}
     \label{fig:back5}
 \end{subfigure}
+\label{fig:opt_comparison}
 \end{figure}
 
 
