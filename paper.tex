@@ -146,57 +146,61 @@ The finite element package Abaqus Explicit is used in this research, on is versi
 \subsection{Simulation results}
 
 
-In order to filter high frequency effects, a SAE 600 filter was applied to the simulation results \cite{Huang}. \Cref{fig:F-D_frictionless,fig:F-D_rough} provide the force-displacement curves considering no friction and rough interaction properties respectively. In that same figure and in the upcoming ones, nomenclature is as follows:
+In order to filter high frequency effects, a SAE 600 filter was applied to the simulation results \cite{Huang}. \Cref{fig:F-D_rough} provides the obtained force-displacement curves and the results obtained in \cite{Peroni2009}. In this figure the nomenclature is as follows:
 \begin{itemize}
-	\item ``A'' or ``B'' indicating the cross-section of the tube: ``A'' for the top-hat, and ``B'' for the double hat.
-
-	\item Following that, ``R'', indicating that the rough tangential contact property was used, or ``Fl'', for the frictionless case.
-
+	\item ``AR'' or ``BR'' indicating the cross-section of the tube: ``A'' for the top-hat, and ``B'' for the double hat.
 	\item An ``R'' after the underline indicates that the crash box had riveting in the triggered cross section.
-
 	\item ``Sb'' after the underline marks the presence of a stabilizing box in the model.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[htpb]
 	\centering
-	\begin{minipage}[b]{.9\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{IMG_CUTRES/AFl}
-	\end{minipage}
-	\quad
-	\begin{minipage}[b]{.9\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{IMG_CUTRES/BFl}
-	\end{minipage}
-	\caption[F-D for modeled cross sections, both top-hat and double hat, with different modeled configurations with frictionless contact.]{F-D for modeled cross sections, both top-hat (red) and double hat (blue), with different modeled configurations with frictionless contact. SEA values in brackets in $\si{\kJ/\kg}$.}
-	\label{fig:F-D_frictionless}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\begin{minipage}[b]{.9\linewidth}
+	\begin{minipage}[b]{.7\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{IMG_CUTRES/AR}
 	\end{minipage}
 	\quad
-	\begin{minipage}[b]{.9\linewidth}
+	\begin{minipage}[b]{.7\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{IMG_CUTRES/BR}
 	\end{minipage}
-	\caption[F-D for modeled cross sections, both top-hat and double hat, with different modeled configurations with rough contact.]{F-D for modeled cross sections, both top-hat (red) and double hat (blue), with different modeled configurations with rough contact. SEA values in brackets in $\si{\kJ/\kg}$.}
+	\quad
+	\begin{minipage}[b]{.7\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{peroni_qstat_fd}
+	\end{minipage}	
+	\caption[Force-displacement curves for top-hat and double hat sections with different modeled configurations.]{Force-displacement curves for top-hat and double hat sections with different modeled configurations and curves in \cite{Peroni2009}. Specific energy absorption is provided in brackets in $\si{\kJ/\kg}$.}
 	\label{fig:F-D_rough}
 \end{figure}
 
+Qualitatively, this curves are very similar to those obtained by \cite{Peroni2009}. \Cref{fig:F-D_rough} depicts also a quasi-static test performed by these authors with the same section and bonding solution. Facing these similitudes, the model is considered valid. A view of the progressive collapse of the top-hat section is provided in \Cref{fig:stable}
+
+In general, a uniform force-displacement curve would be the most desirable scenario, as it would imply maximizing the $E_\text{a}$  with the minimum $P_\text{peak}$. Thus, the best solution will be the one with the most constant response.
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{IMG_CUTRES/peroni_qstat_fd}
-	\caption[F-D obtained by \cite{Peroni2009} in quasi-static test for studied adhesive and other bonding solution.]{F-D obtained by \cite{Peroni2009} in quasi-static test for studied adhesive (blue) and other bonding solution (gray).}
-	\label{fig:peroni_qstat_fd}
+	\begin{minipage}[b]{.15\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{IMG_CUTRES/a0}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.15\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{IMG_CUTRES/a3}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.15\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{IMG_CUTRES/a7}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.15\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{IMG_CUTRES/a10}
+	\end{minipage}
+	\caption[Stable collapse mechanism achieved in the top-hat tube with bounding box.]{Stable collapse mechanism achieved in the top-hat tube with bounding box (hidden). Semi-transparent projection with adhesive in red.}
+	\label{fig:stable}
 \end{figure}
-
-Qualitatively, this curves are very similar to those obtained by \cite{Peroni2009}. \Cref{fig:peroni_qstat_fd} depicts a quasi-static test performed by these authors with the same section and bonding solution. Facing these similitudes, the model is considered valid.
-
-In general, a uniform force-displacement curve would be the most desirable scenario, as it would imply maximizing the $E_\text{a}$  with the minimum $P_\text{peak}$. Thus, the best solution will be the one with the most constant-like behavior.
 
 \subsubsection{Mean and standard deviation}
 
@@ -593,7 +597,6 @@ In general terms, top-hat section tubes better resemble the reference crash boxe
 		\centering
 		\includegraphics[width=\linewidth]{IMG_CUTRES/a10}
 	\end{minipage}
-
 	\caption[Stable collapse mechanism achieved in the top-hat tube with stabilizing box.]{Stable collapse mechanism achieved in the top-hat tube with stabilizing box. Semi-transparent projection with adhesive in red. Total time: $\SI{15}{\ms}$; uniform spacing.}
 	\label{fig:stable}
 \end{figure}
