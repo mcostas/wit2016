@@ -1,5 +1,4 @@
 \documentclass[cmfonts]{witpress}
-\usepackage{todonotes}
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{bm}
@@ -189,7 +188,7 @@ In general, a uniform force-displacement curve would be the most desirable scena
 	\label{fig:stable}
 \end{figure}
 
-\todo{Poner bien las referencias (citet pero que funcione)}
+
 \section{Optimization strategy}
 
 \subsection{Surrogate-based methods}
@@ -245,10 +244,12 @@ In order to optimize the model, the process is divided into two different stages
 Afterwards, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
 
 \section{Conclusions}
-\todo{Quitar el usepackage todonotes}
+From this research the following conclusions can be drawn:
+\begin{itemize}
+	\item The crash behavior of adhesively bonded steel crash boxes have been successfully simulated in a commercial finite element package. Results have been validated with experimental data in the literature.
+	\item A description of a suitable optimization method for the analyzed crash boxes is provided. A multiobjective algorithm enables the balancing of contrasting objective functions like the specific energy absorption and the peak loads of the structures.
 \section{Acknowledgments}
-
-
+The research leading to these results has received funding from the Spanish Government (Ministerio de Economía y Competitividad) under grant agreement DPI2013-41893-R. The authors fully acknowledge the support received.
 
 \bibliography{./references/references}
 
