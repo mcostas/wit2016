@@ -23,7 +23,7 @@
 \maketitle
 
 \begin{abstract}
-This work describes an investigation on the structural optimization of the crash response of aircraft or road vehicle crash boxes, where the force pulse due to frontal impact or hard landing wanted to be kept as stable as possible while reducing the mass of the energy absorbing systems. The objective functions are minimized in a multi-objective approach using metamodeling on finite element models and genetic evolutionary algorithms. Finite element models were subjected to loading conditions simulating, for example, an impact test against a simplified rigid wall in the case of the car model, or a hardlanding impact for the fuselage model. Force-displacement curves were obtained from the analysis and suitably filtered. The objective was to obtain a force-time curve which was as close as possible to the ideal dissipator curve, with lower values of the peaks of acceleration experienced by the occupants; and to minimize the mass for fuel saving and environmental reasons. To that end, optimization strategies were planned carefully to deal with problems which are typical in crashworthiness optimization like expensive computation times and numerical noise.
+This work describes an investigation on the structural optimization of the crash response of aircraft or road vehicle crash boxes, where the force pulse due to frontal impact or hard landing is intended to be kept as constant and acceptable as possible while reducing the mass of the energy absorbing systems. The objective functions are minimized in a multi-objective approach using metamodeling on structural models and genetic evolutionary algorithms. Finite element analysis were carried out for loading conditions simulating, for example, an impact test against a simplified rigid wall in the case of the car model, or a hardlanding impact for the fuselage model. Force-displacement curves were obtained from the analysis and suitably filtered. The objective was to obtain a force-time curve which was as close as possible to the ideal dissipator curve, with lower values of the peaks of acceleration experienced by the occupants; and to minimize the mass for fuel saving and environmental reasons. To that end, optimization strategies were planned carefully to deal with problems which are typical in crashworthiness optimization like expensive computation times and numerical noise.
 \end{abstract}\\
 \emph{Keywords: crashworthiness, damage reduction, size optimization, surrogate models.}
 
@@ -51,7 +51,7 @@ On the other hand, structural adhesives have improved their mechanical propertie
 \Cref{fig:car,fig:plane} show the schematics of a car frame and a fuselage section, both enclosing crash boxes. In this research, a finite element model of an adhesive-bonded energy absorber subjected to impact loads is studied. The specimen is analyzed and its optimization is proposed according to crashworthiness metrics in order to better its performance as a crashworthy element. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
 
 \section{Finite element model}
-The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is practiced on the surface of two flanges on each adherend side. In order to ease the model validation, the crash box geometry was created to reflect those tested by (Peroni, \cite{Peroni2009}) and later modeled by (Scattina, \cite{Scattina2011}). In particular, the two sections depicted in \Cref{fig:crash_box} are modeled in the present study.
+The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is applied on the surface of two flanges on each adherend side. In order to facilitate the model validation, the crash box geometry was created to reflect those tested by (Peroni, \cite{Peroni2009}) and later modeled by (Scattina, \cite{Scattina2011}). In particular, the two sections depicted in \Cref{fig:crash_box} are modeled in the present study.
 \begin{figure}[ht]
   \centering
   \begin{minipage}[b]{.48\linewidth}
@@ -67,11 +67,11 @@ The modeled crash box consists of two adherend cold-formed sheets made of steel 
     \subcaption{General view of the model with the bounding box.}
     \label{fig:general}
   \end{minipage}
-  \caption{Dimensions of the studied crash boxes and view of the finite element model including a bounding box.}
+  \caption{Dimensions of the crash boxes of this study and view of the finite element model including a bounding box.}
   \label{fig:modelo}
 \end{figure}
 
-The tube is crushed between two rigid plates, one fixed and the other moving at impact speed (see \Cref{fig:general}). In order to ease the formation of a stable collapse mechanism, a triggering is machined near the front end of the tube. Due to the high slenderness of the tube, difficulties were found in order to achieve stable collapse mechanisms. On their place, tubes diverted from their axis. Trying to avoid these critical situations, four rigid plates on a rectangular section around the crash tube were added to the model as a bounding box. Its section was $\num{100}\times\SI{60}{\mm}$ and co-centered with the crash box.
+The tube is crushed between two rigid plates, one fixed and the other moving at impact speed (see \Cref{fig:general}). In order to create a stable collapse mechanism, a triggering is machined near the front end of the tube. Due to the high slenderness of the tube, difficulties were found in order to achieve stable collapse mechanisms. On their place, tubes diverted from their axis. Trying to avoid these critical situations, four rigid plates on a rectangular section around the crash tube were added to the model as a bounding box. Its section was $\num{100}\times\SI{60}{\mm}$ and co-centered with the crash box.
 
 The impact plate moved during the simulation at $\SI{10}{\m/\s}$ on a total distance equal to half of the total tube's length, resulting in a total analysis time of $\SI{0.015}{\s}$. Rotational degrees of freedom were fixed on the frontal plate. The rear plate had all degrees of freedom restrained.
 
@@ -114,10 +114,10 @@ The elastic part of the adherend stress-strain curve is defined as linear, with 
 
 \subsection{Finite element mesh and simulation setup}
 
-The use of cohesive elements allowed to make the adhesive's mesh much coarser due to their aspect ratios requirements. These elements were created with a size of $\SI{2.0}{\mm}$, and had only one element in the $\SI{0.3}{\mm}$ layer thickness. Other tested element types, specifically solids, had problems if side lengths were bigger than about $\SI{0.5}{\mm}$, and were completely unfeasible with lengths larger than $\SI{1.0}{\mm}$ approximately.
+The use of cohesive elements allowed to make the adhesive's mesh much coarser due to their aspect ratio requirements. These elements were created with a size of $\SI{2.0}{\mm}$, and had only one element in the $\SI{0.3}{\mm}$ layer thickness. Other tested element types, specifically 3D elements, had problems if side lengths were bigger than about $\SI{0.5}{\mm}$, and were completely unfeasible with lengths larger than $\SI{1.0}{\mm}$ approximately.
 
 % Tie (include image)
-The tie constraint included in Abaqus enabled non-coherent meshes between adhesive and adherend (\Cref{fig:mesh_detail_coh3d_comparison}). This way, finer meshes could be implemented on the adhesive in order to improve the representation of the failure progression without increasing the adherend element recount by leaving a coarser mesh there.
+The tie constraint included in Abaqus enabled non-coherent meshes between adhesive and adherend (\Cref{fig:mesh_detail_coh3d_comparison}). Thus, finer meshes could be implemented on the adhesive in order to improve the representation of the failure progression without increasing the number of elements in the adherends by leaving a coarser mesh there.
 \begin{figure}[htpb]
 	\centering
 	\begin{minipage}[b]{.7\linewidth}
@@ -208,14 +208,14 @@ In order to optimize the specimen, a surrogate-optimization approach is proposed
 
 Firstly, with the parametrized model, a sampling of $n$ samples is performed, relying on the LHS technique. This method creates a set of data with homogeneous projections on each variable axis, so that no superimposed projections appear. 
 
-Once the sampling is obtained, the surrogate model is created. The Multivariate adaptive regression splines (MARS) method is chosen, where the surrogate functions are adjusted with cubic splines following the next expression
+Once the sampling is obtained, the surrogate model is created. The Multivariate adaptive regression splines (MARS) method is chosen, where the surrogate functions are fitted with cubic splines according to the next expression
 \begin{equation}\label{eq:mars}
 \hat{f}\left ( \bm{x} \right )= \sum_{m=1}^{M}a_{m}B_{m}\left ( \bm{x} \right ),
 \end{equation}
 where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in (Friedman, \cite{Friedman1995197}). 
 
 
-With the surrogate-based model created, multi-objective optimization is performed. Traditional methods involving gradient-based and Hessian-based information are not very useful for these surrogate models, since many local minima are found in the function, yielding only misleading results. Therefore, evolutionary algorithms are used, since this type of methods are slower but dodge local minima with ease. The results are conformed by a Pareto front, corresponding to a range of results. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
+With the surrogate-based model created, a multi-objective optimization is performed. The results are conformed by a Pareto front, corresponding to a range of results. This Pareto front means that the value of one objective function cannot be improved without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
 
 \begin{figure}[htpb]
   \centering
@@ -247,7 +247,7 @@ From this research the following conclusions can be drawn:
 \begin{itemize}
 	\item The crash behavior of adhesively bonded steel crash boxes have been successfully simulated in a commercial finite element package.
 	\item Results have been validated with experimental data in the literature.
-	\item A description of a suitable optimization method for the analyzed crash boxes is provided. A multiobjective algorithm enables the balancing of contrasting objective functions like the specific energy absorption and the peak loads of the structures.
+	\item A description of a suitable optimization method for the analyzed crash boxes is provided. A multiobjective algorithm enables the balancing of conflicting objective functions like the specific energy absorption and the peak loads of the structures.
 \end{itemize}
 
 \section{Acknowledgments}
