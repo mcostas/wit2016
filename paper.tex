@@ -827,14 +827,11 @@ In case of triggering missfunction, it reaches $\SI{11.66}{\kJ/\kg}$, a value al
 \todo{Poner bien las referencias (citet pero que funcione)}
 \section{Optimization strategy}
 
-
-
-
 \subsection{Surrogate-based methods}
 
 In order to optimize the specimen, a surrogate-optimization approach is used. Therefore, the computationally-expensive  objective functions of the model are replaced by another functions less costly to evaluate. 
 
-Firstly, with the parametrized model, a sampling of !!N!!\todo{!!} samples is performed, relying on the LHS technique. This method creates a set of data with homogeneous projections on each variable axis, so that no superimposed projections appear. 
+Firstly, with the parametrized model, a sampling of !!N!! samples is performed, relying on the LHS technique. This method creates a set of data with homogeneous projections on each variable axis, so that no superimposed projections appear. 
 
 Once the sampling is obtained, the surrogate model is created. The Multivariate adaptive regression splines (MARS) method is chosen, where the surrogate functions are adjusted with cubic splines following the next expression
 \begin{equation}\label{eq:mars}
@@ -878,7 +875,7 @@ Therefore, the results shall be analyzed and, depending on the needs required fo
 The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}. This methods perform optimization supporting general constraints as well as mixtures of real and discrete variables. The variables are encoded and referred to as chromosomes, and each digit of the variable is a gene.
 
 \subsection{Metrics}
-\todo{Plagiado}
+
 The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
 
 Before making any calculations with the force-displacement curve, and according to the specialized literature in crash analysis \cite{Huanglibro}, a standard SAE 600 filter \cite{J211} is applied. This removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. Once the filter is used, the direct integration of the resulting force-displacement curve yields to the $E_a$:
@@ -921,7 +918,7 @@ Secondly, single-objective optimization is run for the SEA objective function. W
 
 Lastly, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
 
-Starting from a baseline model, the optima greatly improve the performance of the model. \Cref{fig:opt_comparison} shows the section of both a baseline model and the single-objective optimum for a maximized SEA. \todo{Te falta el caption. El label ya se lo puse yo.}
+Starting from a baseline model, the optima greatly improve the performance of the model. \Cref{fig:opt_comparison} shows the section of both a baseline model and the single-objective optimum for a maximized SEA. 
 
 \begin{figure}[htpb]
 \begin{subfigure}[b]{.45\columnwidth}
@@ -931,13 +928,13 @@ Starting from a baseline model, the optima greatly improve the performance of th
 \end{subfigure}
 \qquad
 \begin{subfigure}[b]{.45\columnwidth}
-   \includegraphics[width=\columnwidth]{figures/IMG/topview.png}
-    \caption{Specimen with optimum SEA.}
+   \includegraphics[width=\columnwidth]{figures/IMG/top_view_foam.eps}
+    \caption{Specimen with the optimum SEA value.}
     \label{fig:back5}
 \end{subfigure}
-\caption{blablabla}
-\label{fig:opt_comparison}
 \end{figure}
+
+
 
 
 \section{Conclusions}
