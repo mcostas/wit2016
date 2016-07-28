@@ -215,31 +215,8 @@ Once the sampling is obtained, the surrogate model is created. The Multivariate 
 \end{equation}
 where $B_{m}$ are the power basis functions, $a_{m}$ the coefficients of the functions, and $M$ is the number of functions. This method is more thoroughly explained in \cite{Friedman1995197}. 
 
-% In order to judge the accuracy of the trend functions, the goodness of fit $R^2$, needs to be looked into. This indicator is defined as
-% \begin{equation}\label{eq:correlation_coefficient}
-%   R^2 = {\left(\dfrac{\sigma_{\bm{f}
-% \bm{\hat{f}}}}{\sqrt{\sigma_{\bm{f}}^2
-% \sigma_{\bm{\hat{f}}}^2}}\right)}^2
-% \end{equation}
 
-% This is done for all objective functions, where values equal or higher than $0.95$ for the selected objective functions are expected. 
-
-With the surrogate-based model created, two optimization strategies are used. In a first approach, single-objective optimization techniques are applied. The calculations that this type of optimization requires are relatively simple once the proper surrogate model has been built. Single-objective optimization searches for the minima of the function within the limits of the design space. Traditional methods involving gradient-based and Hessian-based information are not very useful for optimizing the type of problems studied in this research, since many local minima are found in the function, yielding only misleading results. Therefore, a single-objective evolutionary algorithm is used, since this type of methods are slower but dodge local minima with ease.
-
-
-
-% The set of all Pareto optimal design configurations, $P^*$, is defined as:
-
-% \begin{equation}
-% P^* := \left\{ x \in \Pi \   \nexists x' \in \Pi \    \hat{f}_i \left( \bm{x'} \right) \leqslant \hat{f}_i \left( \bm{x} \right)  \right\}
-% \end{equation}
-% and the Pareto front, which is the set of optimal objective functions from the Pareto design configurations, $PF^*$, is defined as:
-
-% \begin{equation}
-% PF^* := \left\{ \overline{\bm{u}} = \left( \hat{f}_1 \left( \bm{x} \right), \ldots , \hat{f}_k \left( \bm{x} \right) \right)  x \in P^* \right\}
-% \end{equation}
-
-The other type of optimization used is multi-objective optimization, where the results are conformed by a Pareto front, corresponding to a range of results. In the end, the set of points from the Pareto front has a number of components equal to the number of objective functions, each constituting a feasible solution to the problem. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
+With the surrogate-based model created, multi-objective optimization is performed. Traditional methods involving gradient-based and Hessian-based information are not very useful for these surrogate models, since many local minima are found in the function, yielding only misleading results. Therefore, evolutionary algorithms are used, since this type of methods are slower but dodge local minima with ease. The results are conformed by a Pareto front, corresponding to a range of results. This Pareto front points cannot improve the value of one objective function without worsening the value of at least one other objective function. \Cref{fig:Pareto} shows an example of a Pareto front opposing the energy absorbed by the specimen and its mass, where the line constitutes the set of optima for these metrics.
 
 \begin{figure}[htpb]
   \centering
@@ -248,76 +225,35 @@ The other type of optimization used is multi-objective optimization, where the r
   \label{fig:Pareto}
 \end{figure}
 
-% Therefore, the results shall be analyzed and, depending on the needs required for the specimen, one or other point on the frontier is chosen. As with the single-objective optimization, multi-objective optimization usually has problems with local minima. For this problem, genetic algorithms are used, aiming for better and more reliable results.
-
-The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}, which perform optimization supporting general constraints as well as mixtures of real and discrete variables.
+% The methods selected for both the single- and the multi-objective optimization are the genetic algorithms from the JEGA Library, developed by \cite{JEGA}, which perform optimization supporting general constraints as well as mixtures of real and discrete variables.
 
 \subsection{Metrics}
 
 The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
 
-The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} befora making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, the $E_a$ is obtained as
-\begin{equation}\label{Ea}
-  E_{a}=\int _{0}^{\delta }F\! \left( z \right) \,dz\,,
-\end{equation}
-where $\delta$ is the total axial crushing distance and $F\! \left( z \right)$ the crushing force at a distance $z$.
+The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} before making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, $E_a$ and $P_{peak}$ are obtained.
+% \begin{equation}\label{Ea}
+%   E_{a}=\int _{0}^{\delta }F\! \left( z \right) \,dz\,,
+% \end{equation}
+% where $\delta$ is the total axial crushing distance and $F\! \left( z \right)$ the crushing force at a distance $z$.
 
-The peak load $P_{peak}$ is defined as
-\begin{equation}\label{Peak}
- P_{peak}=max\left\{ F\! \left( z \right)  \forall z \in [0,\delta] \right\}
-\end{equation}
+% The peak load $P_{peak}$ is defined as
+% \begin{equation}\label{Peak}
+%  P_{peak}=max\left\{ F\! \left( z \right)  \forall z \in [0,\delta] \right\}
+% \end{equation}
 
 The first reason for choosing these metrics is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would the mass of the specimen and $P_{peak}$. Increasing the mass also  increases the vehicle's fuel consumption and reduces its efficiency; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
 Furthermore, other researchers have traditionally swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. Thus, they were also evaluated as objective functions, but it was found that during the optimization process these quantities have a more complicated comportment and a noisier nature for this model. 
-% The SEA function is defined as a ratio between $E_a$ and $m$:
-% \begin{equation}\label{SEA}
-%   S\! EA=\dfrac {E_a} {m}
-% \end{equation}
-
-% By contrast, the load ratio relates the $P_{peak}$ with the mean load $P_m$ as
-% \begin{equation}\label{LR}
-%   LR=\dfrac {P_{peak}} {P_m}
-% \end{equation}
-
-% The mean load is obtained as a ratio between the absorbed energy and the total crushing length $\delta$:
-% \begin{equation}\label{Pm}
-%   P_{m}=\dfrac {E_a} {\delta}
-% \end{equation}
-
-
-
-% Consequently, they were only used during the parameter study and the single-objective optimization. They were discarded from the multi-objective  optimization process and are only used as indicators to compare different specimens.
-
-% The peak load is also used as a constraint in the single-objective optimization. This is done so that, in the real specimen, the required force to crumple the piece is never over a certain value, thus protecting the rest of the car's chassis and the occupants. In the multi-objective optimization this is not required nor used, since the final results consist of Pareto fronts, where the maximum peak load depends on the mass or energy absorption desired.
 
 \subsection{Optimization process}
 
-In order to optimize the model, the process has been divided into different stages. Firstly, a parameter study is performed. A simple sampling of the work space for each variable is carried out. With this, a general idea of the variables' behavior is obtained.
+In order to optimize the model, the process is divided into two different stages. Firstly, a parameter study is performed. A simple sampling of the work space for each variable is carried out. With this, a general idea of the variables' behavior is obtained.
 
-Secondly, single-objective optimization is run for the SEA objective function. Whereas an optimization of the mass and the absorbed energy would provide better results, this can be easier optimized, since the other option requires multi-objective optimization. Both unconstrained and constrained optimization procedures are considered, setting a limit for the peak load constraint in the latter.
-
-Lastly, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
-
-Starting from a baseline model, the optima greatly improve the performance of the model. \Cref{fig:opt_comparison} shows the section of both a baseline model and the single-objective optimum for a maximized SEA. 
-
-\begin{figure}[htpb]
-\begin{subfigure}[b]{.45\columnwidth}
-   \includegraphics[width=\columnwidth]{figures/IMG/sc1.pdf}
-    \caption{Baseline model.}
-    \label{fig:back0}
-\end{subfigure}
-\qquad
-\begin{subfigure}[b]{.45\columnwidth}
-   \includegraphics[width=\columnwidth]{figures/IMG/topview}
-    \caption{Specimen with the optimum SEA value.}
-    \label{fig:back5}
-\end{subfigure}
-\label{fig:opt_comparison}
-\end{figure}
+% Secondly, single-objective optimization is run for the SEA objective function. Whereas an optimization of the mass and the absorbed energy would provide better results, this can be easier optimized, since the other option requires multi-objective optimization. Both unconstrained and constrained optimization procedures are considered, setting a limit for the peak load constraint in the latter.
 
 
-
+Afterwards, multi-objective unconstrained optimization is sought. All objective functions are minimized, and the points obtained as solution cannot be improved in a variable without harming, at least, another one. This last step is the most complete, giving more information of the behavior of the functions and the optimization process, but due to the greater complexity in the evaluation it is computed the last.
 
 \section{Conclusions}
 \todo{Quitar el usepackage todonotes}
