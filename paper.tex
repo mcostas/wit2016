@@ -42,7 +42,6 @@ As shown in \Cref{fig:comparison}, adhesives are very competitive both in bondin
 
 \section{Finite element model}
 The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is practiced on the surface of two flanges on each adherend side. In order to ease the model validation, the crash box geometry was created to reflect those tested by \cite{Peroni2009} and later modeled by \cite{Scattina2011}. In particular, the two sections depicted in \cref{fig:crash_box} are modeled in the present study.
-
 \begin{figure}[ht]
   \centering
   \begin{minipage}[b]{.48\linewidth}
@@ -77,7 +76,6 @@ The model is made up of two different materials: the adherends of the tube are m
 According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}{\MPa}$, although this parameter is subject to variation depending both in cure temperature and time. The bulk modulus is $\SI{1460}{\MPa}$ and the adhesive's density is $\SI{1.30}{\tonne/\m^3}$ \cite{manufCatalog}. The constitutive behavior was supposed to be isotropic linear elastic \cite{SernaMoreno2015} up to failure start. An uncoupled traction elastic behavior \cite{Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014} on 3D cohesive finite elements was chosen.
 
 \cite{Scattina2011} obtained adhesive stiffnesses through the inverse method, which are summarized in \cref{tab:ads_params}. These same parameters were used in the present study, as their results could be validated with the model.
-
 \begin{table}
 	\centering
 	\begin{tabular}{llrl}
@@ -96,20 +94,7 @@ According to \cite{manufCatalog}, the shear strength of the adhesive is $\SI{44}
 	\label{tab:ads_params}
 \end{table}
 
-Contact failure modeling ---corresponding to adhesive failure--- resulted in some simulation problems, so adhesives and adherends were kept together with a simplified tie constraint. Thus, failure definitions were only included in the bulk material, obviating the contact/adhesive failure as suggested by several authors \cite{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014, SernaMoreno2015}, although the modeled cohesive damage parameters include the effect of both adhesive and cohesive resistance. The quadratic nominal stress criterion is a damage initiation criterion, defined as
-\begin{equation}
-\left(\frac{\left<\sigma_{n}\right>}{\sigma_{n}^{0}}\right)^{2} + \left(\frac{\tau_{II}}{\tau_{II}^{0}}\right)^{2} + \left(\frac{\tau_{III}}{\tau_{III}^{0}}\right)^{2} = 1 ;
-\label{eq:quads}
-\end{equation}
-where $\sigma_{n}^{0}$, $\tau_{II}^{0}$ and $\tau_{III}^{0}$ represent the pure mode loading threshold stresses for each direction. The out-of-plane value, $\sigma_{n}^{0}$, was set to $\SI{42.5}{\MPa}$ \cite{Scattina2011}, which corresponds to the peeling failure stress for steel. Note that Macaulay brackets indicate that compression is not considered in failure initiation. Both in-plane values, $\tau_{II}^{0}$ and $\tau_{III}^{0}$, were set to $\SI{130}{\MPa}$ \cite{Scattina2011}. These values are also included in \cref{tab:ads_params}. % ref to catalog?
-
-As long as the condition exposed in \cref{eq:quads} is not satisfied, the adhesive layer behaves elastically. Once the condition gets satisfied, damage starts and a degradation in stiffness can be appreciated following the specified damage evolution model. For this particular case, the material degradation was set as a fracture energy power law, as given by \cref{eq:fracture_energy}.
-
-\begin{equation}
-\left(\frac{G_{I}}{G_{Ic}}\right)^{\alpha}+\left(\frac{G_{II}}{G_{IIc}}\right)^{\alpha}+\left(\frac{G_{III}}{G_{IIIc}}\right)^{\alpha}=1 ;
-\label{eq:fracture_energy}
-\end{equation}
-where $G_{Ic}$ corresponds to the critical fracture energy required to cause failure in mode I (out-of-plane direction), and being $G_{IIc}$ and $G_{IIIc}$ the values for mode II and III, respectively, which correspond to both shear directions. The critical fracture energy for the Loctite Hysol 9514 in the normal direction is $\SI{2028}{\J/\m^2}$ \cite{Scattina2011}. It was considered that the adhesive had no preferential directions for tangential failure, meaning $G_{IIc}$ was equal to $G_{IIIC}$, and being the fracture energy equal to $\SI{11853}{\J/\m^2}$ \cite{Scattina2011}. These values are also provided in \cref{tab:ads_params}. The exponent $\alpha$ was considered equal to $\num{2}$ \cite{Loureiro2010, Sadowski2010, SernaMoreno2015}.
+Contact failure modeling ---corresponding to adhesive failure--- resulted in some simulation problems, so adhesives and adherends were kept together with a simplified tie constraint. Thus, failure definitions were only included in the bulk material, obviating the contact/adhesive failure as suggested by several authors \cite{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014, SernaMoreno2015}, although the modeled cohesive damage parameters include the effect of both adhesive and cohesive resistance.
 
 Regarding the metal sheets, in order to make the model comparable to the experiments carried out by \cite{Peroni2009}, steel was chosen for these adherends. In the present study, it is defined as an isotropic elastic-plastic material, with a density of $\SI{7.85}{\tonne/\m^3}$.
 
@@ -123,21 +108,25 @@ The use of cohesive elements allowed to make the adhesive's mesh much coarser du
 
 % Tie (include image)
 The tie constraint included in Abaqus enabled non-coherent meshes between adhesive and adherend (\cref{fig:mesh_detail_coh3d_comparison}). This way, finer meshes could be implemented on the adhesive in order to improve the representation of the failure progression without increasing the adherend element recount by leaving a coarser mesh there.
-
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/mesh_detail_coh3d_comparison}
-	\caption[Detail of COH3D mesh on the adhesive layer.]{Detail of COH3D mesh on the adhesive layer (blue).}
-	\label{fig:mesh_detail_coh3d_comparison}
+	\begin{minipage}[b]{.7\linewidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{figures/IMG_CUTRES/mesh_detail_coh3d_comparison}
+		\caption[Detail of COH3D mesh on the adhesive layer.]{Detail of COH3D mesh on the adhesive layer (blue).}
+		\label{fig:mesh_detail_coh3d_comparison}
+	\end{minipage}
+	\\[10pt]
+	\begin{minipage}[b]{.7\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/IMG_CUTRES/mesh}
+		\caption{General mesh of the crash box.}
+		\label{fig:mesh}
+	\end{minipage}
+	\caption{Views of the mesh of the finite element model: globral view and detail view of the adhesive.}
+	\label{fig:mallas}
 \end{figure}
 
-\Cref{fig:mesh} shows the used mesh for the crash tube, which has more than $\num{10600}$ elements.
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.9\linewidth]{figures/IMG_CUTRES/mesh}
-	\caption{General mesh of the crash box.}
-	\label{fig:mesh}
-\end{figure}
 
 The finite element package Abaqus Explicit is used in this research, on is version 6.13 \cite{Abaqus613Manual} running on a high performance computing cluster. Jobs running on loop parallelization over $16$ cores took about $\SI{8}{\hour}$ to finish. Domain parallelization turned out to be inefficient in this case due to poor network performance.
 
