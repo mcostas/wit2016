@@ -218,7 +218,7 @@ With the surrogate-based model created, multi-objective optimization is performe
 
 \subsection{Metrics}
 
-The objective of this research is to find a set of optimum designs of the specimen previously described according to three different objective functions. These functions are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The three metrics are obtained using a finite element simulation, where $E_a$ and $P_{peak}$ are obtained via the force-displacement curves.
+The objective functions considered in this research are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The mass of the specimen is obtained from the finite element model, and $E_a$ and $P_{peak}$ are obtained from the resulting force-displacement curves.
 
 The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} before making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, $E_a$ and $P_{peak}$ are obtained.
 % \begin{equation}\label{Ea}
@@ -233,7 +233,7 @@ The force-displacement curve obtained is filtered with a standard SAE 600 filter
 
 The first reason for choosing these metrics is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would the mass of the specimen and $P_{peak}$. Increasing the mass also  increases the vehicle's fuel consumption and reduces its efficiency; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
-Furthermore, other researchers have traditionally swerved towards optimization of the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. Thus, they are also evaluated as objective functions, but considering their more complicated comportment and a noisier nature for this model. 
+Furthermore, other researchers have traditionally optimized the specific energy absorption (SEA) and the load ratio (LR) \cite{Hou2007555}. Thus, they are also evaluated as objective functions, but considering their more complicated comportment and a noisier nature for this model. 
 
 \subsection{Optimization process}
 
