@@ -23,14 +23,14 @@
 \maketitle
 
 \begin{abstract}
-This work describes an investigation on the structural optimization of the crash response of aircraft or road vehicle crash boxes, where the force pulse due to frontal impact or hard landing is intended to be kept as constant and acceptable as possible while reducing the mass of the energy absorbing systems. The objective functions are minimized in a multi-objective approach using metamodeling on structural models and genetic evolutionary algorithms. Finite element analysis were carried out for loading conditions simulating, for example, an impact test against a simplified rigid wall in the case of the car model, or a hardlanding impact for the fuselage model. Force-displacement curves were obtained from the analysis and suitably filtered. The objective was to obtain a force-time curve which was as close as possible to the ideal dissipator curve, with lower values of the peaks of acceleration experienced by the occupants; and to minimize the mass for fuel saving and environmental reasons. To that end, optimization strategies were planned carefully to deal with problems which are typical in crashworthiness optimization like expensive computation times and numerical noise.
+This work describes an investigation on the structural optimization of the crash response of aircraft or road vehicle crash boxes, where the force pulse due to frontal impact or hard landing is intended to be kept as constant and acceptable as possible while reducing the mass of the energy absorbing systems. The objective functions are minimized in a multi-objective approach using metamodeling on structural models and genetic evolutionary algorithms. Finite element analysis were carried out for loading conditions simulating, for example, an impact test against a simplified rigid wall in the case of the car model, or a hardlanding impact for the fuselage model. Force-displacement curves were obtained from the analysis and suitably filtered. The objective was to obtain a force-time curve which was as close as possible to the ideal dissipator curve, with lower values of the peaks of acceleration experienced by the occupants; and to minimize the mass for fuel saving and environmental reasons. To achieve these objectives, optimization strategies were planned carefully to deal with problems which are typical in crashworthiness optimization like expensive computation times and numerical noise.
 \end{abstract}\\
 \emph{Keywords: crashworthiness, damage reduction, size optimization, surrogate models.}
 
 \section{Introduction}
 Occupant safety is a key issue on vehicle and aircraft design nowadays, and crashworthy elements are required to absorb the energy during a crash and minimize the effects on the occupants. Aircraft and vehicles are nowadays provided with crash boxes to absorb the impact energy through deformation in order to protect the passengers. They are usually tube-shaped and made of several parts that require some kind of bonding.
 
-On the other hand, structural adhesives have improved their mechanical properties in recent years and can be now used with confidence in heavy duty applications. Interest on them is also raising up in scientific fields thanks to these enhancements and to the recent development of validated numerical models.
+On the other hand, structural adhesives have improved their mechanical properties in recent years and can be nowadays used with confidence in heavy duty applications. Interest on them is also raising up in scientific fields thanks to these enhancements and to the recent development of validated numerical models.
 
 
 \begin{figure}[htpb]
@@ -48,7 +48,7 @@ On the other hand, structural adhesives have improved their mechanical propertie
 \label{fig:car_plane}
 \end{figure}
 
-\Cref{fig:car,fig:plane} show the schematics of a car frame and a fuselage section, both enclosing crash boxes. In this research, a finite element model of an adhesive-bonded energy absorber subjected to impact loads is studied. The specimen is analyzed and its optimization is proposed according to crashworthiness metrics in order to better its performance as a crashworthy element. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
+\Cref{fig:car,fig:plane} show the schematics of a car frame and a fuselage section, both enclosing crash boxes. In this research, a finite element model of an adhesive-bonded energy absorber subjected to impact loads is studied. The specimen is analyzed and its optimization is proposed according to crashworthiness metrics in order to improve its performance as a crashworthy element. Information and data present in the literature are used to create and validate these models in order to ensure the accuracy of the results.
 
 \section{Finite element model}
 The modeled crash box consists of two adherend cold-formed sheets made of steel that create a tube of square section bonded together with an epoxy adhesive. The joint is applied on the surface of two flanges on each adherend side. In order to facilitate the model validation, the crash box geometry was created to reflect those tested by (Peroni, \cite{Peroni2009}) and later modeled by (Scattina, \cite{Scattina2011}). In particular, the two sections depicted in \Cref{fig:crash_box} are modeled in the present study.
@@ -71,13 +71,13 @@ The modeled crash box consists of two adherend cold-formed sheets made of steel 
   \label{fig:modelo}
 \end{figure}
 
-The tube is crushed between two rigid plates, one fixed and the other moving at impact speed (see \Cref{fig:general}). In order to create a stable collapse mechanism, a triggering is machined near the front end of the tube. Due to the high slenderness of the tube, difficulties were found in order to achieve stable collapse mechanisms. On their place, tubes diverted from their axis. Trying to avoid these critical situations, four rigid plates on a rectangular section around the crash tube were added to the model as a bounding box. Its section was $\num{100}\times\SI{60}{\mm}$ and co-centered with the crash box.
+The tube is crushed between two rigid plates, one fixed and the other moving at impact speed (see \Cref{fig:general}). In order to create a stable collapse mechanism, a triggering is machined near the front end of the tube. Due to the high slenderness of the tube, difficulties were found in order to achieve stable collapse mechanisms. In some cases, tubes diverted from their axis. Trying to avoid these critical situations, four rigid plates on a rectangular section around the crash tube were added to the model as a bounding box. Its section was $\num{100}\times\SI{60}{\mm}$ and co-centered with the crash box.
 
 The impact plate moved during the simulation at $\SI{10}{\m/\s}$ on a total distance equal to half of the total tube's length, resulting in a total analysis time of $\SI{0.015}{\s}$. Rotational degrees of freedom were fixed on the frontal plate. The rear plate had all degrees of freedom restrained.
 
-The last $\SI{5}{\mm}$ of the crash tube had all degrees of freedom fixed (see \Cref{fig:general}), except displacement on the impact direction in order to allow the reaction force measurement commented before. This way, numerical issues due to excesive unrestrained degrees of freedom on the whole tube were prevented.
+The last $\SI{5}{\mm}$ of the crash tube had all degrees of freedom fixed (see \Cref{fig:general}), except displacement on the impact direction in order to allow the reaction force measurement commented before. By doing that, numerical issues due to excessive unrestrained degrees of freedom on the whole tube were prevented.
 
-Peeling problems were found near the impact head end during the development of the study. This was solved in \cite{Peroni2009} by adding two rivets on the bonded flanges at the triggered section in order to avoid excessive debonding on that part of the tube in the initial phases of the impact and, thus, prevent critical situations. In this study, this was simulated by a $\SI{2}{\mm}$-diameter spot-weld at the same location.
+Peeling problems were found near the impact head end during the development of the study. This was solved in \cite{Peroni2009} by adding two rivets on the bonded flanges at the triggered section in order to avoid excessive debonding on that part of the tube in the initial phases of the impact and, thus, preventing critical situations. In this study, this was simulated by a $\SI{2}{\mm}$-diameter spot-weld at the same location.
 
 \subsection{Materials}
 
@@ -85,7 +85,7 @@ The model is made up of two different materials: the adherends of the tube are m
 
 According to (Loctite, \cite{manufCatalog}), the shear strength of the adhesive is $\SI{44}{\MPa}$, although this parameter is subject to variation depending both in cure temperature and time. The bulk modulus is $\SI{1460}{\MPa}$ and the adhesive's density is $\SI{1.30}{\tonne/\m^3}$ \cite{manufCatalog}. The constitutive behavior was supposed to be isotropic linear elastic \cite{SernaMoreno2015} up to failure start. An uncoupled traction elastic behavior (Sadowski, Scattina \cite{Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014}) on 3D cohesive finite elements was chosen.
 
-\cite{Scattina2011} obtained adhesive stiffnesses through the inverse method, which are summarized in \Cref{tab:ads_params}. These same parameters were used in the present study, as their results could be validated with the model.
+The stiffness of the adhesive was obtained by \cite{Scattina2011} using the inverse method, which is summarized in \Cref{tab:ads_params}. These same parameters were used in the present study, as their results could be validated with the model.
 \begin{table}
 	\centering
 	\begin{tabular}{llrl}
@@ -104,7 +104,7 @@ According to (Loctite, \cite{manufCatalog}), the shear strength of the adhesive 
 	\label{tab:ads_params}
 \end{table}
 
-Contact failure modeling ---corresponding to adhesive failure--- resulted in some simulation problems, so adhesives and adherends were kept together with a simplified tie constraint. Thus, failure definitions were only included in the bulk material, obviating the contact/adhesive failure as suggested by several authors (Greve, Loureiro, Sadowski, Scattina, Serna \cite{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014, SernaMoreno2015}), although the modeled cohesive damage parameters include the effect of both adhesive and cohesive resistance.
+Contact failure modeling in computer simulations --corresponding to adhesive failure-- resulted in some simulation problems, so adhesives and adherends were kept together with a simplified tie constraint. Thus, failure definitions were only included in the bulk material, obviating the contact/adhesive failure as suggested by several authors (Greve, Loureiro, Sadowski, Scattina, Serna \cite{Greve2007, Loureiro2010, Sadowski2010, Sadowski2011, Scattina2011, Sadowski2014, SernaMoreno2015}), although the modeled cohesive damage parameters include the effect of both adhesive and cohesive resistance.
 
 Regarding the metal sheets, in order to make the model comparable to the experiments carried out by \cite{Peroni2009}, steel was chosen for these adherends. In the present study, it is defined as an isotropic elastic-plastic material, with a density of $\SI{7.85}{\tonne/\m^3}$.
 
@@ -143,10 +143,10 @@ The finite element package Abaqus Explicit is used in this research, on is versi
 \subsection{Simulation results}
 
 
-In order to filter high frequency effects, a SAE 600 filter was applied to the simulation results (Huang, \cite{Huang}). \Cref{fig:F-D_rough} provides the obtained force-displacement curves and the results obtained in \cite{Peroni2009}. In this figure the nomenclature is as follows:
+In order to filter high frequency effects, a SAE 600 filter was applied to the simulation results (Huang, \cite{Huang}). \Cref{fig:F-D_rough} shows the obtained force-displacement curves and the results obtained in \cite{Peroni2009}. In this figure the nomenclature is as follows:
 \begin{itemize}
-	\item ``AR'' or ``BR'' indicating the cross-section of the tube: ``A'' for the top-hat, and ``B'' for the double hat.
-	\item An ``R'' after the underline indicates that the crash box had riveting in the triggered cross section.
+	\item ``AR'' or ``BR'' indicate the cross-section of the tube: ``A'' for the top-hat, and ``B'' for the double hat.
+	\item An ``R'' after the underline means that the crash box had riveting in the triggered cross section.
 	\item ``Sb'' after the underline marks the presence of a stabilizing box in the model.
 \end{itemize}
 
@@ -170,11 +170,11 @@ In order to filter high frequency effects, a SAE 600 filter was applied to the s
 	\label{fig:F-D_rough}
 \end{figure}
 
-Qualitatively, this curves are very similar to those obtained by \cite{Peroni2009}. \Cref{fig:F-D_rough} depicts also a quasi-static test performed by these authors with the same section and bonding solution. Facing these similitudes, the model is considered valid. A view of the progressive collapse of the top-hat section is provided in \Cref{fig:stable}
+Qualitatively, this curves are very similar to those obtained by \cite{Peroni2009}. \Cref{fig:F-D_rough} depicts also a quasi-static test performed by these authors with the same section and bonding solution. Facing these similitudes, the model is considered valid. A view of the progressive collapse of the top-hat section is provided in \Cref{fig:stable}.
 
 In general, a uniform force-displacement curve would be the most desirable scenario, as it would imply maximizing the $E_\text{a}$  with the minimum $P_\text{peak}$. Thus, the best solution will be the one with the most constant response.
 
-\begin{figure}
+\begin{figure}[htpb]
 	\centering
 	\begin{minipage}[b]{.15\linewidth}
 		\centering
@@ -226,14 +226,14 @@ With the surrogate-based model created, a multi-objective optimization is perfor
 
 \subsection{Metrics}
 
-The objective functions considered in this research are the absorbed energy ($E_a$), the mass of the specimen ($m$) and the peak load ($P_{peak}$). The mass of the specimen is obtained from the finite element model, and $E_a$ and $P_{peak}$ are obtained from the resulting force-displacement curves.
+The objective functions considered in this research are the absorbed energy ($E_\text{a}$), the mass of the specimen ($m$) and the peak load ($P_\text{peak}$). The mass of the specimen is obtained from the finite element model, and $E_\text{a}$ and $P_\text{peak}$ are obtained from the resulting force-displacement curves.
 
-The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} before making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, $E_a$ and $P_{peak}$ are obtained.
+The force-displacement curve obtained is filtered with a standard SAE 600 filter \cite{J211} before making any calculations, as this removes the high-frequency noise from the curve with a cutoff frequency of ${1000}$ Hz. After this, $E_\text{a}$ and $P_\text{peak}$ are obtained.
 
 
-The first reason for choosing these metrics is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_a$ can be easily improved by increasing the thicknesses of the materials, but this would the mass of the specimen and $P_{peak}$. Increasing the mass also  increases the vehicle's fuel consumption and reduces its efficiency; whereas an increase in the $P_{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
+The first reason for choosing these metrics is the nature of the design and its aim to improve the crashworthiness of vehicles. The $E_\text{a}$ can be easily improved by increasing the thicknesses of the materials, but this would the mass of the specimen and $P_\text{peak}$. Increasing the mass also  increases the vehicle's fuel consumption and reduces its efficiency; whereas an increase in the $P_\text{peak}$ means a higher force and acceleration suffered by the passengers of the vehicle, raising the odds of resulting in a serious injury.
 
-Furthermore, other researchers have traditionally optimized the specific energy absorption (SEA) and the load ratio (LR) (Hou, \cite{Hou2007555}). Thus, they are also evaluated as objective functions, but considering their more complicated comportment and a noisier nature for this model. 
+Furthermore, other researchers have traditionally optimized the specific energy absorption (SEA) and the load ratio (LR) (Hou, \cite{Hou2007555}). Thus, they are also evaluated as objective functions, but considering their more complicated behavior and a noisier nature for this model. 
 
 \subsection{Optimization process}
 
